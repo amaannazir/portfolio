@@ -51,55 +51,63 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Get In <span className="text-primary">Touch</span>
-          </h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Have a project in mind or want to discuss warehouse technology solutions? Let's connect!
-          </p>
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
+              Get In <span className="text-primary">Touch</span>
+            </h2>
+            <p className="text-lg text-muted-foreground font-light">
+              Let's discuss how I can contribute to your team's success
+            </p>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name">Your Name</Label>
+              <Label htmlFor="name" className="font-light tracking-wide">
+                Your Name
+              </Label>
               <Input
                 id="name"
                 type="text"
                 placeholder="John Doe"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-card"
+                className="bg-card border-border focus:border-primary transition-colors"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Your Email</Label>
+              <Label htmlFor="email" className="font-light tracking-wide">
+                Your Email
+              </Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="john@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-card"
+                className="bg-card border-border focus:border-primary transition-colors"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message" className="font-light tracking-wide">
+                Message
+              </Label>
               <Textarea
                 id="message"
                 placeholder="Tell me about your project or opportunity..."
                 rows={6}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-card resize-none"
+                className="bg-card border-border focus:border-primary transition-colors resize-none"
               />
             </div>
 
             <Button type="submit" size="lg" className="w-full">
-              Send Message
+              SEND MESSAGE
             </Button>
           </form>
         </div>

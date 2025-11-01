@@ -29,30 +29,35 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-card/30">
+    <section id="projects" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            My <span className="text-primary">Projects</span>
-          </h2>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
+              Featured <span className="text-primary">Projects</span>
+            </h2>
+            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+              Real-world solutions powering multi-million pound warehouse operations at NEXT
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectsData.map((project, index) => (
               <Card
                 key={index}
-                className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2"
+                className="group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2"
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-video overflow-hidden bg-muted">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                
+
                 <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
+                  <CardTitle className="text-xl font-light tracking-wide">{project.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed font-light">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
@@ -62,7 +67,7 @@ const Projects = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20"
+                        className="px-3 py-1 text-xs font-light bg-transparent text-primary rounded-full border border-primary/30"
                       >
                         {tech}
                       </span>

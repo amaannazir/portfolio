@@ -8,35 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 222.2 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 217.2 32.6% 17.5%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 217.2 32.6% 17.5%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 180 95% 52%;
-    --primary-foreground: 222.2 47% 11%;
+    --primary: 18 90% 60%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 217.2 32.6% 22%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 180 95% 52%;
-    --accent-foreground: 222.2 47% 11%;
+    --accent: 18 90% 60%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 25%;
-    --input: 217.2 32.6% 25%;
-    --ring: 180 95% 52%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 18 90% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +56,41 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 217.2 32.6% 17.5%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 217.2 32.6% 17.5%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 180 95% 52%;
-    --primary-foreground: 222.2 47% 11%;
+    --primary: 18 90% 60%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 217.2 32.6% 22%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 180 95% 52%;
-    --accent-foreground: 222.2 47% 11%;
+    --accent: 18 90% 60%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 25%;
-    --input: 217.2 32.6% 25%;
-    --ring: 180 95% 52%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 18 90% 60%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 18 90% 60%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 18 90% 60%;
   }
 }
 
@@ -101,9 +101,44 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans;
+    position: relative;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  .abstract-shape {
+    position: absolute;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    opacity: 0.15;
+    filter: blur(40px);
   }
 }
