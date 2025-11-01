@@ -30,7 +30,7 @@ const Navigation = () => {
             onClick={() => scrollToSection("about")}
             className="text-xl font-semibold text-primary hover:text-primary/80 transition-colors"
           >
-            Alex Thompson
+            Amaan Nazir
           </button>
 
           <div className="flex items-center gap-8">

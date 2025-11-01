@@ -5,24 +5,24 @@ import scanTrackImage from "@/assets/project-scantrack.jpg";
 
 const projectsData = [
   {
-    title: "WMS Dashboard Pro",
+    title: "Legacy System Modernisation",
     description:
-      "A real-time Warehouse Management System (WMS) dashboard providing analytics on inventory levels, order fulfillment rates, and picker efficiency.",
-    technologies: ["React", "D3.js", "Node.js", "PostgreSQL"],
+      "Single-handedly owned a 6-month project to modernise a critical legacy reporting application used by all warehouse operation teams at NEXT. Re-engineered 93+ reports and migrated merchandise intake systems into an integrated C# .NET solution with MudBlazor frontend, ensuring brand consistency across all NEXT applications.",
+    technologies: ["C#", ".NET Core", "MudBlazor", "ASP.NET Core", "SQL"],
     image: wmsImage,
   },
   {
-    title: "OptiRoute AI",
+    title: "IIP - International Intake Processing",
     description:
-      "An AI-powered algorithm that calculates the most efficient picking routes for warehouse staff, reducing travel time by an average of 15%.",
-    technologies: ["Python", "TensorFlow", "Flask", "Google Maps API"],
+      "Developed and integrated a new C# .NET application for processing international intake within existing UAE/Dubai warehouses, enhancing NEXT's global logistics capabilities and streamlining cross-border merchandise operations.",
+    technologies: ["C#", ".NET", "ASP.NET Core", "EF Core"],
     image: optiRouteImage,
   },
   {
-    title: "ScanTrack Mobile",
+    title: "Checkstation Application",
     description:
-      "A cross-platform mobile app for inventory tracking using barcode and RFID scanning, ensuring 99.9% accuracy in stock management.",
-    technologies: ["Flutter", "Firebase", "GCP Vision AI"],
+      "Contributed to the design and implementation of the 'Checkstation' State Machine client application, a vital system for reporting and routing non-compliant products in NEXT's flagship E3 warehouse, ensuring quality control and compliance.",
+    technologies: ["C#", ".NET", "Blazor", "State Machine"],
     image: scanTrackImage,
   },
 ];
