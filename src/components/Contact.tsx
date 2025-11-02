@@ -5,6 +5,7 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z
@@ -30,8 +31,9 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate form data
@@ -43,11 +45,27 @@ const Contact = () => {
       return;
     }
 
-    // Show success message
-    toast.success("Thank you for your message! I'll get back to you soon.");
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) {
+        console.error("Error sending email:", error);
+        toast.error("Failed to send message. Please try again or email me directly.");
+        return;
+      }
+
+      toast.success("Thank you for your message! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to send message. Please try again or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -106,8 +124,8 @@ const Contact = () => {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
-              SEND MESSAGE
+            <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
             </Button>
           </form>
         </div>
