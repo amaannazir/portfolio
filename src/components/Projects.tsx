@@ -1,9 +1,19 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { ExternalLink } from "lucide-react";
 import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
+import halalDeliveryImage from "@/assets/project-halal-delivery.jpg";
 
 const projectsData = [
+  {
+    title: "Halal Meat Delivery Platform",
+    description:
+      "Final year dissertation project addressing a real-world issue: enabling students to order and purchase halal meats directly to their home or accommodation. Built a responsive web application with integrated student email validation system to ensure authentic student access.",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Email Validation"],
+    image: halalDeliveryImage,
+    github: "https://github.com/yourusername/halal-delivery-platform",
+  },
   {
     title: "Legacy System Modernisation",
     description:
@@ -63,7 +73,7 @@ const Projects = () => {
                 </CardHeader>
 
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
@@ -73,6 +83,17 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      View on GitHub
+                    </a>
+                  )}
                 </CardContent>
               </Card>
             ))}
