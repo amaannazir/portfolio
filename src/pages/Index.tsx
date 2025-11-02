@@ -8,7 +8,7 @@ import AbstractShapes from "@/components/AbstractShapes";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-x-hidden">
       <Starfield />
       <AbstractShapes />
       <div className="relative z-10">
