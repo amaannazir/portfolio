@@ -28,18 +28,10 @@ const Hero = () => {
                   I specialise in modernising and engineering critical warehouse logistics systems using C#, .NET, Blazor, ASP.NET Core,
                   and EF Core. With rapid promotion to Mid-Level Developer in just 18 months, I bring proven problem-solving and
                   system modernisation skills to every project.
-                </p>
-              </div>
+              </p>
+            </div>
 
-              {/* Pagination dots */}
-              <div className="flex gap-2 py-2">
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
-                <div className="w-2 h-2 rounded-full bg-muted"></div>
-                <div className="w-2 h-2 rounded-full bg-muted"></div>
-                <div className="w-2 h-2 rounded-full bg-muted"></div>
-              </div>
-
-              <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-4 pt-4">
                 <Button size="lg" asChild>
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
