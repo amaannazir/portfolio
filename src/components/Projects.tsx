@@ -9,10 +9,10 @@ const projectsData = [
   {
     title: "Halal Meat Delivery Platform",
     description:
-      "Final year dissertation project addressing a real-world issue: enabling students to order and purchase halal meats directly to their home or accommodation. Built a responsive web application with integrated student email validation system to ensure authentic student access.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Email Validation"],
+      "Final year dissertation project addressing a real-world issue: enabling students to order and purchase halal meats directly to their home or accommodation. Full-featured e-commerce platform with Stripe payment integration, shopping cart system, user accounts, delivery forms, and student email validation—just like ordering anything online with a complete checkout experience.",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Authentication"],
     image: halalDeliveryImage,
-    github: "https://github.com/yourusername/halal-delivery-platform",
+    github: "https://github.com/amaannazir/halalonthego",
   },
   {
     title: "Legacy System Modernisation",
