@@ -47,7 +47,7 @@ const Projects = () => {
               Featured <span className="text-primary">Projects</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
-              Real-world solutions powering multi-million pound warehouse operations at NEXT and innovative full-stack e-commerce applications
+              Real-world solutions powering multi-million pound warehouse operations at NEXT and innovative personal full-stack e-commerce applications
             </p>
           </div>
 
