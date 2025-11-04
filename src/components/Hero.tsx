@@ -1,6 +1,6 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
 import { Button } from "./ui/button";
-import profileImage from "@/assets/profile-headshot.jpg";
+import profileImage from "@/assets/profile-headshot.png";
 
 const Hero = () => {
   return (
