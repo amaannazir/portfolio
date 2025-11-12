@@ -1,14 +1,23 @@
 import { Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import profileImage from "@/assets/profile-headshot.png";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Hero = () => {
+  const textAnimation = useScrollAnimation(0.1);
+  const imageAnimation = useScrollAnimation(0.1);
+
   return (
     <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 space-y-8">
+            <div 
+              ref={textAnimation.ref}
+              className={`order-2 md:order-1 space-y-8 transition-all duration-700 ${
+                textAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
+              }`}
+            >
               <div className="space-y-4">
                 <h1 className="text-6xl md:text-7xl font-light leading-tight tracking-tight">
                   Full-Stack Developer
@@ -57,7 +66,12 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="order-1 md:order-2 flex justify-center relative">
+            <div 
+              ref={imageAnimation.ref}
+              className={`order-1 md:order-2 flex justify-center relative transition-all duration-700 ${
+                imageAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
+              }`}
+            >
               <div className="relative">
                 {/* Glowing effect behind image */}
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-110"></div>

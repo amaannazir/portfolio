@@ -6,6 +6,7 @@ import { Label } from "./ui/label";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const contactSchema = z.object({
   name: z
@@ -32,6 +33,8 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const headerAnimation = useScrollAnimation(0.1);
+  const formAnimation = useScrollAnimation<HTMLFormElement>(0.1);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +75,12 @@ const Contact = () => {
     <section id="contact" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-16">
+          <div 
+            ref={headerAnimation.ref}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
+            }`}
+          >
             <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
               Get In <span className="text-primary">Touch</span>
             </h2>
@@ -81,7 +89,13 @@ const Contact = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form 
+            ref={formAnimation.ref}
+            onSubmit={handleSubmit} 
+            className={`space-y-6 transition-all duration-700 ${
+              formAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
+            }`}
+          >
             <div className="space-y-2">
               <Label htmlFor="name" className="font-light tracking-wide">
                 Your Name

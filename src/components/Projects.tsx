@@ -4,6 +4,7 @@ import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
 import halalDeliveryImage from "@/assets/project-halal-delivery.jpg";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const projectsData = [
   {
@@ -38,11 +39,18 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const headerAnimation = useScrollAnimation(0.1);
+
   return (
     <section id="projects" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div 
+            ref={headerAnimation.ref}
+            className={`text-center mb-20 transition-all duration-700 ${
+              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
+            }`}
+          >
             <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
               Featured <span className="text-primary">Projects</span>
             </h2>
@@ -52,11 +60,19 @@ const Projects = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.map((project, index) => (
-              <Card
-                key={index}
-                className="group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2"
-              >
+            {projectsData.map((project, index) => {
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              const cardAnimation = useScrollAnimation(0.1);
+              
+              return (
+                <Card
+                  key={index}
+                  ref={cardAnimation.ref}
+                  className={`group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 ${
+                    cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                 <div className="aspect-video overflow-hidden bg-muted">
                   <img
                     src={project.image}
@@ -96,7 +112,8 @@ const Projects = () => {
                   )}
                 </CardContent>
               </Card>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
