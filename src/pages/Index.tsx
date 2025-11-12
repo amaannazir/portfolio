@@ -5,12 +5,14 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
 import AbstractShapes from "@/components/AbstractShapes";
+import MouseGlow from "@/components/MouseGlow";
 
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
       <Starfield />
       <AbstractShapes />
+      <MouseGlow />
       <div className="relative z-10">
         <Navigation />
         <Hero />
