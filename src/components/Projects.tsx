@@ -68,7 +68,7 @@ const Projects = () => {
                 <Card
                   key={index}
                   ref={cardAnimation.ref}
-                  className={`group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 ${
+                  className={`group overflow-hidden bg-card border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 hover:scale-105 ${
                     cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -77,7 +77,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
                   />
                 </div>
 
