@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone } from "lucide-react";
+import { Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import profileImage from "@/assets/profile-headshot.png";
 
@@ -32,6 +32,12 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all" asChild>
+                  <a href="/Amaan_Nazir_CV.pdf" download="Amaan_Nazir_CV.pdf">
+                    <Download className="w-5 h-5" />
+                    DOWNLOAD CV
+                  </a>
+                </Button>
                 <Button size="lg" asChild>
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
