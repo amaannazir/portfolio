@@ -103,7 +103,7 @@ const Contact = () => {
               <Input
                 id="name"
                 type="text"
-                placeholder="Amaan Nazir"
+                placeholder="John Doe"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="bg-card border-border focus:border-primary transition-colors"
@@ -117,7 +117,7 @@ const Contact = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="amaan-619@hotmail.co.uk"
+                placeholder="john@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="bg-card border-border focus:border-primary transition-colors"
