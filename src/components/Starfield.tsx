@@ -43,10 +43,10 @@ const Starfield = () => {
       },
       particles: {
         color: {
-          value: "#9b87f5",
+          value: "#ffffff",
         },
         links: {
-          color: "#9b87f5",
+          color: "#ffffff",
           distance: 150,
           enable: false,
           opacity: 0.3,
