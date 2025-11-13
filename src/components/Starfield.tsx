@@ -1,11 +1,15 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
 const Starfield = () => {
+  const [init, setInit] = useState(false);
+
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
     });
   }, []);
 
@@ -31,38 +35,40 @@ const Starfield = () => {
           grab: {
             distance: 150,
             links: {
-              opacity: 0.4,
-              color: "hsl(var(--primary))",
+              opacity: 0.5,
+              color: "#9b87f5",
             },
           },
         },
       },
       particles: {
         color: {
-          value: "hsl(var(--primary))",
+          value: "#9b87f5",
         },
         links: {
-          color: "hsl(var(--primary))",
+          color: "#9b87f5",
           distance: 150,
           enable: false,
-          opacity: 0.2,
+          opacity: 0.3,
           width: 1,
         },
         move: {
           direction: "none" as const,
           enable: true,
           outModes: {
-            default: "bounce" as const,
+            default: "out" as const,
           },
           random: true,
-          speed: 0.5,
+          speed: 0.3,
           straight: false,
         },
         number: {
           density: {
             enable: true,
+            width: 1920,
+            height: 1080,
           },
-          value: 80,
+          value: 100,
         },
         opacity: {
           value: { min: 0.3, max: 0.8 },
@@ -83,6 +89,10 @@ const Starfield = () => {
     }),
     []
   );
+
+  if (!init) {
+    return null;
+  }
 
   return (
     <Particles
