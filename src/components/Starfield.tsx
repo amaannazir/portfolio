@@ -27,6 +27,10 @@ const Starfield = () => {
             enable: true,
             mode: "grab",
           },
+          onClick: {
+            enable: true,
+            mode: "grab",
+          },
           resize: {
             enable: true,
           },
@@ -97,7 +101,8 @@ const Starfield = () => {
   return (
     <Particles
       id="tsparticles"
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"
+      className="fixed top-0 left-0 w-full h-full z-[1]"
+      style={{ pointerEvents: 'auto' }}
       options={options}
     />
   );
