@@ -36,7 +36,7 @@ const Starfield = () => {
             distance: 150,
             links: {
               opacity: 0.5,
-              color: "#9b87f5",
+              color: "#ffffff",
             },
           },
         },
