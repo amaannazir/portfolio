@@ -1,93 +1,47 @@
 const AbstractShapes = () => {
   return (
     <>
-      {/* Large diagonal shapes on the right */}
+      {/* Full-width gradient overlay */}
       <div
-        className="abstract-shape"
+        className="fixed inset-0 pointer-events-none z-0"
         style={{
-          background: "linear-gradient(135deg, hsl(18, 90%, 60%), hsl(25, 85%, 55%))",
-          width: "400px",
-          height: "600px",
-          top: "10%",
-          right: "-100px",
-          transform: "rotate(-25deg)",
-          opacity: 0.2,
+          background: "linear-gradient(135deg, transparent 0%, hsl(18, 90%, 60%) 40%, hsl(25, 85%, 55%) 70%, hsl(30, 80%, 50%) 100%)",
+          opacity: 0.15,
         }}
       />
+      
+      {/* Subtle floating shapes for depth */}
       <div
         className="abstract-shape"
         style={{
-          background: "linear-gradient(135deg, hsl(25, 85%, 55%), hsl(18, 90%, 60%))",
-          width: "350px",
-          height: "550px",
-          top: "15%",
-          right: "50px",
-          transform: "rotate(-25deg)",
-          opacity: 0.18,
-        }}
-      />
-      <div
-        className="abstract-shape"
-        style={{
-          background: "linear-gradient(135deg, hsl(18, 90%, 60%), hsl(30, 80%, 50%))",
-          width: "300px",
+          background: "radial-gradient(circle, hsl(18, 90%, 60%), transparent 70%)",
+          width: "500px",
           height: "500px",
           top: "20%",
-          right: "200px",
-          transform: "rotate(-25deg)",
-          opacity: 0.15,
-        }}
-      />
-
-      {/* Small floating circles */}
-      <div
-        className="abstract-shape"
-        style={{
-          background: "hsl(18, 90%, 60%)",
-          width: "80px",
-          height: "80px",
-          top: "15%",
-          right: "25%",
-          borderRadius: "50%",
-          opacity: 0.25,
-        }}
-      />
-      <div
-        className="abstract-shape"
-        style={{
-          background: "hsl(18, 90%, 60%)",
-          width: "50px",
-          height: "50px",
-          top: "22%",
-          right: "20%",
-          borderRadius: "50%",
-          opacity: 0.2,
-        }}
-      />
-      <div
-        className="abstract-shape"
-        style={{
-          background: "hsl(18, 90%, 60%)",
-          width: "120px",
-          height: "120px",
-          bottom: "20%",
-          right: "15%",
-          borderRadius: "50%",
-          opacity: 0.15,
-        }}
-      />
-
-      {/* Curved shape bottom right */}
-      <div
-        className="abstract-shape"
-        style={{
-          background: "linear-gradient(225deg, hsl(18, 90%, 60%), hsl(25, 85%, 55%))",
-          width: "200px",
-          height: "200px",
-          bottom: "10%",
           right: "10%",
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          opacity: 0.2,
+          opacity: 0.12,
+        }}
+      />
+      <div
+        className="abstract-shape"
+        style={{
+          background: "radial-gradient(circle, hsl(25, 85%, 55%), transparent 70%)",
+          width: "400px",
+          height: "400px",
+          bottom: "15%",
+          left: "5%",
+          opacity: 0.1,
+        }}
+      />
+      <div
+        className="abstract-shape"
+        style={{
+          background: "radial-gradient(circle, hsl(30, 80%, 50%), transparent 70%)",
+          width: "350px",
+          height: "350px",
+          top: "40%",
+          left: "30%",
+          opacity: 0.08,
         }}
       />
     </>
