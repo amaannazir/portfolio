@@ -68,10 +68,13 @@ const Projects = () => {
                 <Card
                   key={index}
                   ref={cardAnimation.ref}
-                  className={`group overflow-hidden bg-card border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 hover:scale-105 ${
+                  className={`glass-card group overflow-hidden border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 ${
                     cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
                   }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    transition: 'all 0.3s ease-out'
+                  }}
                 >
                 <div className="aspect-video overflow-hidden bg-muted">
                   <img

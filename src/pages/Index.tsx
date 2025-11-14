@@ -1,25 +1,39 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Stats from "@/components/Stats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
 import AbstractShapes from "@/components/AbstractShapes";
 import MouseGlow from "@/components/MouseGlow";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
+import LoadingScreen from "@/components/LoadingScreen";
+import CursorTrail from "@/components/CursorTrail";
 
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      <LoadingScreen />
+      <ScrollProgress />
       <Starfield />
       <AbstractShapes />
       <MouseGlow />
+      <CursorTrail />
       <div className="relative z-10">
         <Navigation />
         <Hero />
+        <Stats />
         <Projects />
+        <Skills />
+        <Experience />
         <Contact />
         <Footer />
       </div>
+      <BackToTop />
     </div>
   );
 };
