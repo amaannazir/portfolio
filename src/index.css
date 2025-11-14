@@ -149,4 +149,24 @@ All colors MUST be HSL.
   .abstract-shape:hover {
     transform: scale(1.1);
   }
+
+  /* Glassmorphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(245, 135, 31, 0.3);
+  }
+
+  /* Smooth parallax */
+  .parallax {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
 }

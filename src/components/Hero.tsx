@@ -20,9 +20,10 @@ const Hero = () => {
             >
               <div className="space-y-4">
                 <h1 className="text-6xl md:text-7xl font-light leading-tight tracking-tight">
-                  Full-Stack Developer
+                  <span className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>Full-Stack</span>{' '}
+                  <span className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>Developer</span>
                 </h1>
-                <p className="text-2xl text-primary font-light tracking-wide">
+                <p className="text-2xl text-primary font-light tracking-wide animate-fade-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
                   Warehouse Logistics Systems
                 </p>
               </div>

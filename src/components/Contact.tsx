@@ -92,7 +92,7 @@ const Contact = () => {
           <form 
             ref={formAnimation.ref}
             onSubmit={handleSubmit} 
-            className={`space-y-6 transition-all duration-700 ${
+            className={`glass-card p-8 rounded-2xl space-y-6 transition-all duration-700 ${
               formAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
             }`}
           >

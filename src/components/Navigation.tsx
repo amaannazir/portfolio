@@ -53,6 +53,18 @@ const Navigation = () => {
                 Projects
               </button>
               <button
+                onClick={() => scrollToSection("skills")}
+                className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
+              >
+                Skills
+              </button>
+              <button
+                onClick={() => scrollToSection("experience")}
+                className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
+              >
+                Experience
+              </button>
+              <button
                 onClick={() => scrollToSection("contact")}
                 className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
               >
