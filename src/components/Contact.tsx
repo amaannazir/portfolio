@@ -103,7 +103,7 @@ const Contact = () => {
               <Input
                 id="name"
                 type="text"
-                placeholder="Your name"
+                placeholder="Your Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="bg-card border-border focus:border-primary transition-colors"
