@@ -33,11 +33,11 @@ const Hero = () => {
                   Hi, I'm <span className="text-foreground">Amaan Nazir</span>
                 </h2>
 
-                <p className="text-lg text-muted-foreground leading-relaxed font-light max-w-xl">
+              <p className="text-lg text-muted-foreground leading-relaxed font-light max-w-xl">
                   First-Class Software Engineering graduate and Full-Stack Systems Developer with a proven track record at NEXT.
-                  I specialise in modernising and engineering critical warehouse logistics systems using C#, .NET, Blazor, ASP.NET Core,
-                  and EF Core. With rapid promotion to Mid-Level Developer in just 18 months, I bring proven problem-solving and
-                  system modernisation skills to every project.
+                  Leveraged a high-impact placement year into a full-time role, earning a rapid promotion to Mid-Level Developer in just 18 months.
+                  Specialises in modernising and engineering critical warehouse logistics systems using C#, .NET, Blazor, ASP.NET Core,
+                  and EF Core. Eager to bring proven problem-solving and system modernisation skills to a new challenge.
               </p>
             </div>
 

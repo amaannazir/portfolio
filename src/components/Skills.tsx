@@ -2,11 +2,11 @@ import { Code2, Database, Server, Globe, Layers, Boxes } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const skills = [
-  { name: "C# & .NET", icon: Code2, color: "from-purple-500 to-blue-500" },
+  { name: "C# & .NET Core", icon: Code2, color: "from-purple-500 to-blue-500" },
   { name: "ASP.NET Core", icon: Server, color: "from-blue-500 to-cyan-500" },
-  { name: "Blazor", icon: Globe, color: "from-violet-500 to-purple-500" },
-  { name: "Entity Framework", icon: Database, color: "from-green-500 to-emerald-500" },
-  { name: "React & TypeScript", icon: Layers, color: "from-cyan-500 to-blue-500" },
+  { name: "Blazor & MudBlazor", icon: Globe, color: "from-violet-500 to-purple-500" },
+  { name: "Entity Framework Core", icon: Database, color: "from-green-500 to-emerald-500" },
+  { name: "TypeScript & Angular", icon: Layers, color: "from-cyan-500 to-blue-500" },
   { name: "SQL Server", icon: Boxes, color: "from-orange-500 to-red-500" },
 ];
 
