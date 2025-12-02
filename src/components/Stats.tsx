@@ -6,7 +6,7 @@ const statsData = [
   { number: 93, suffix: "+", label: "Reports Modernised" },
   { number: 18, suffix: " months", label: "To Mid-Level Promotion" },
   { number: 6, suffix: " months", label: "Solo Project Ownership" },
-  { number: 73, suffix: "%", label: "Degree (1st Class Honours)" },
+  { number: 73, suffix: "%", label: "Degree Classification (1st Class Honors)" },
 ];
 
 const Stats = () => {
