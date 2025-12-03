@@ -11,7 +11,7 @@ const Hero = () => {
     <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-16 items-center">
             <div 
               ref={textAnimation.ref}
               className={`order-2 md:order-1 space-y-8 transition-all duration-700 ${
