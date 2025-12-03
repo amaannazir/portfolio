@@ -2,19 +2,39 @@ import { Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import profileImage from "@/assets/profile-headshot.png";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const textAnimation = useScrollAnimation(0.1);
   const imageAnimation = useScrollAnimation(0.1);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+      {/* Parallax background elements */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      >
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-accent/5 rounded-full blur-2xl" />
+      </div>
+      
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-2 md:gap-16 items-center">
             <div 
               ref={textAnimation.ref}
-              className={`order-2 md:order-1 space-y-6 md:space-y-8 transition-all duration-700 ${
+              className={`order-2 md:order-1 space-y-4 md:space-y-8 transition-all duration-700 ${
                 textAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
@@ -69,7 +89,7 @@ const Hero = () => {
 
             <div 
               ref={imageAnimation.ref}
-              className={`order-1 md:order-2 flex justify-center relative transition-all duration-700 ${
+              className={`order-1 md:order-2 flex justify-center relative mb-0 transition-all duration-700 ${
                 imageAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
               }`}
             >
