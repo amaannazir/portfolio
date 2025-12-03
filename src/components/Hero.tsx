@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <section id="about" className="min-h-screen flex items-start md:items-center pt-24 md:pt-20 relative overflow-hidden">
       {/* Parallax background elements */}
       <div 
         className="absolute inset-0 pointer-events-none"
