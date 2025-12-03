@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
+import InteractiveTimeline from "@/components/InteractiveTimeline";
 import Stats from "@/components/Stats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -13,6 +13,9 @@ import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import LoadingScreen from "@/components/LoadingScreen";
 import CursorTrail from "@/components/CursorTrail";
+import Certifications from "@/components/Certifications";
+import WorkedWith from "@/components/WorkedWith";
+import TechStack from "@/components/TechStack";
 
 const Index = () => {
   return (
@@ -26,10 +29,13 @@ const Index = () => {
       <div className="relative z-10">
         <Navigation />
         <Hero />
+        <WorkedWith />
         <Stats />
         <Projects />
         <Skills />
-        <Experience />
+        <TechStack />
+        <InteractiveTimeline />
+        <Certifications />
         <Contact />
         <Footer />
       </div>

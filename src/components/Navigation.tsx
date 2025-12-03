@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { User } from "lucide-react";
 import { Button } from "./ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +39,7 @@ const Navigation = () => {
             AMAAN NAZIR
           </button>
 
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-8 md:gap-12">
             <div className="hidden md:flex items-center gap-8">
               <button
                 onClick={() => scrollToSection("about")}
@@ -59,6 +60,12 @@ const Navigation = () => {
                 Skills
               </button>
               <button
+                onClick={() => scrollToSection("stack")}
+                className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
+              >
+                Stack
+              </button>
+              <button
                 onClick={() => scrollToSection("experience")}
                 className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
               >
@@ -72,8 +79,9 @@ const Navigation = () => {
               </button>
             </div>
 
-            <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" asChild>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Button variant="outline" size="sm" asChild className="hidden sm:flex">
                 <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
                   Connect
                 </a>

@@ -89,7 +89,7 @@ const Hero = () => {
 
             <div 
               ref={imageAnimation.ref}
-              className={`order-1 md:order-2 flex justify-center relative mb-0 transition-all duration-700 ${
+              className={`order-1 md:order-2 flex justify-center relative -mb-4 md:mb-0 transition-all duration-700 ${
                 imageAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
               }`}
             >
