@@ -11,10 +11,10 @@ const Hero = () => {
     <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-center">
             <div 
               ref={textAnimation.ref}
-              className={`order-2 md:order-1 space-y-8 transition-all duration-700 ${
+              className={`order-2 md:order-1 space-y-6 md:space-y-8 transition-all duration-700 ${
                 textAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
               }`}
             >
@@ -79,7 +79,7 @@ const Hero = () => {
                 <img
                   src={profileImage}
                   alt="Amaan Nazir - Full-Stack Software Developer"
-                  className="relative w-80 h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl"
+                  className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl"
                 />
               </div>
             </div>
