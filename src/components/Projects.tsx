@@ -4,6 +4,7 @@ import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
 import halalDeliveryImage from "@/assets/project-halal-delivery.jpg";
+import gwosImage from "@/assets/project-gwos.jpg";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const projectsData = [
@@ -20,28 +21,28 @@ const projectsData = [
     description:
       "Enterprise-level Warehouse Management System orchestrating complex logistics operations across UK, Germany, Russia, Poland, and UAE. Implemented end-to-end staff performance tracking for bonus calculations, integrated RF handheld scanners and label printers with the central database, built QC workflow UI with full internationalization, and refactored legacy test infrastructure to improve CI/CD pipeline stability.",
     technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "LINQ", "MSTest/Moq", "jQuery"],
-    image: wmsImage,
+    image: gwosImage,
   },
   {
     title: "Legacy System Modernisation",
     description:
       "Single-handedly owned a 6-month project to modernise a critical legacy reporting application used by all warehouse operation teams at NEXT. Re-engineered 93+ reports and migrated merchandise intake systems into an integrated C# .NET solution with MudBlazor frontend, ensuring brand consistency across all NEXT applications.",
     technologies: ["C#", ".NET Core", "MudBlazor", "ASP.NET Core", "SQL"],
-    image: optiRouteImage,
+    image: wmsImage,
   },
   {
     title: "IIP - International Intake Processing",
     description:
       "Developed and integrated a new C# .NET application for processing international intake within existing UAE/Dubai warehouses, enhancing NEXT's global logistics capabilities and streamlining cross-border merchandise operations.",
     technologies: ["C#", ".NET", "ASP.NET Core", "EF Core"],
-    image: scanTrackImage,
+    image: optiRouteImage,
   },
   {
     title: "Checkstation Application",
     description:
       "Contributed to the design and implementation of the 'Checkstation' State Machine client application, a vital system for reporting and routing non-compliant products in NEXT's flagship E3 warehouse, ensuring quality control and compliance.",
     technologies: ["C#", ".NET", "Blazor", "State Machine"],
-    image: wmsImage,
+    image: scanTrackImage,
   },
 ];
 
