@@ -19,7 +19,7 @@ const projectsData = [
   {
     title: "GWOS - Global Warehouse Operating System",
     description:
-      "Enterprise-level Warehouse Management System orchestrating complex logistics operations across UK, Germany, Russia, Poland, and UAE. Implemented end-to-end staff performance tracking for bonus calculations, integrated RF handheld scanners and label printers with the central database, built QC workflow UI with full internationalization, and refactored legacy test infrastructure to improve CI/CD pipeline stability.",
+      "Enterprise-level Warehouse Management System orchestrating complex logistics operations across UAE (Dubai), UK, Germany, Russia, and Poland. Implemented end-to-end staff performance tracking for bonus calculations, integrated RF handheld scanners and label printers with the central database, built QC workflow UI with full internationalization, and refactored legacy test infrastructure to improve CI/CD pipeline stability.",
     technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "LINQ", "MSTest/Moq", "jQuery"],
     image: gwosImage,
   },
