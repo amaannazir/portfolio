@@ -1,17 +1,24 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useTheme } from "next-themes";
 
 const Starfield = () => {
   const [init, setInit] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
   }, []);
+
+  const particleColor = resolvedTheme === "dark" ? "#ffffff" : "#1a1a1a";
+  const linkColor = resolvedTheme === "dark" ? "#ffffff" : "#1a1a1a";
 
   const options = useMemo(
     () => ({
@@ -40,17 +47,17 @@ const Starfield = () => {
             distance: 150,
             links: {
               opacity: 0.5,
-              color: "#ffffff",
+              color: linkColor,
             },
           },
         },
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: particleColor,
         },
         links: {
-          color: "#ffffff",
+          color: linkColor,
           distance: 150,
           enable: false,
           opacity: 0.3,
@@ -91,16 +98,17 @@ const Starfield = () => {
       },
       detectRetina: true,
     }),
-    []
+    [particleColor, linkColor]
   );
 
-  if (!init) {
+  if (!init || !mounted) {
     return null;
   }
 
   return (
     <Particles
       id="tsparticles"
+      key={resolvedTheme}
       className="fixed top-0 left-0 w-full h-full z-[1]"
       style={{ pointerEvents: 'auto' }}
       options={options}
