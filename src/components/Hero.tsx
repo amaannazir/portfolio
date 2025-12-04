@@ -50,7 +50,7 @@ const Hero = () => {
 
               <div className="space-y-4">
                 <h2 className="text-3xl font-light text-muted-foreground">
-                  Hi, I'm <span className="text-foreground">Amaan Nazir</span>
+                  Hi, I'm <span className="text-primary font-medium">Amaan Nazir</span>
                 </h2>
 
               <p className="text-lg text-muted-foreground leading-relaxed font-light max-w-xl">
