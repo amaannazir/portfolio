@@ -16,25 +16,32 @@ const projectsData = [
     github: "https://github.com/amaannazir/halalonthego",
   },
   {
+    title: "GWOS - Global Warehouse Operating System",
+    description:
+      "Enterprise-level Warehouse Management System orchestrating complex logistics operations across UK, Germany, Russia, Poland, and UAE. Implemented end-to-end staff performance tracking for bonus calculations, integrated RF handheld scanners and label printers with the central database, built QC workflow UI with full internationalization, and refactored legacy test infrastructure to improve CI/CD pipeline stability.",
+    technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "LINQ", "MSTest/Moq", "jQuery"],
+    image: wmsImage,
+  },
+  {
     title: "Legacy System Modernisation",
     description:
       "Single-handedly owned a 6-month project to modernise a critical legacy reporting application used by all warehouse operation teams at NEXT. Re-engineered 93+ reports and migrated merchandise intake systems into an integrated C# .NET solution with MudBlazor frontend, ensuring brand consistency across all NEXT applications.",
     technologies: ["C#", ".NET Core", "MudBlazor", "ASP.NET Core", "SQL"],
-    image: wmsImage,
+    image: optiRouteImage,
   },
   {
     title: "IIP - International Intake Processing",
     description:
       "Developed and integrated a new C# .NET application for processing international intake within existing UAE/Dubai warehouses, enhancing NEXT's global logistics capabilities and streamlining cross-border merchandise operations.",
     technologies: ["C#", ".NET", "ASP.NET Core", "EF Core"],
-    image: optiRouteImage,
+    image: scanTrackImage,
   },
   {
     title: "Checkstation Application",
     description:
       "Contributed to the design and implementation of the 'Checkstation' State Machine client application, a vital system for reporting and routing non-compliant products in NEXT's flagship E3 warehouse, ensuring quality control and compliance.",
     technologies: ["C#", ".NET", "Blazor", "State Machine"],
-    image: scanTrackImage,
+    image: wmsImage,
   },
 ];
 
