@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import SkillsRadar from "@/components/SkillsRadar";
 import InteractiveTimeline from "@/components/InteractiveTimeline";
 import Stats from "@/components/Stats";
 import Contact from "@/components/Contact";
@@ -45,6 +46,10 @@ const Index = () => {
         
         <AnimatedSection delay={0.1} direction="left">
           <Skills />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1} direction="up">
+          <SkillsRadar />
         </AnimatedSection>
         
         <AnimatedSection delay={0.1} direction="right">
