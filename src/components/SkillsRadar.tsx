@@ -14,10 +14,12 @@ const skillsData = [
   { skill: "ASP.NET Core", proficiency: 90, fullMark: 100 },
   { skill: "SQL Server", proficiency: 88, fullMark: 100 },
   { skill: "TypeScript", proficiency: 85, fullMark: 100 },
+  { skill: "CSS", proficiency: 85, fullMark: 100 },
   { skill: "Blazor", proficiency: 82, fullMark: 100 },
   { skill: "Entity Framework", proficiency: 88, fullMark: 100 },
   { skill: "Azure DevOps", proficiency: 80, fullMark: 100 },
   { skill: "React", proficiency: 78, fullMark: 100 },
+  { skill: "Mobile Dev", proficiency: 75, fullMark: 100 },
 ];
 
 const CustomTooltip = ({ active, payload }: any) => {
