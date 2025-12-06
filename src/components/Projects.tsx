@@ -59,7 +59,7 @@ const Projects = () => {
               headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
               Featured <span className="text-primary">Projects</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">

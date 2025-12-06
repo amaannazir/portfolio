@@ -39,21 +39,21 @@ const Hero = () => {
               }`}
             >
               <div className="space-y-4">
-                <h1 className="text-6xl md:text-7xl font-light leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-light leading-tight tracking-tight">
                   <span className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>Full-Stack</span>{' '}
                   <span className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>Developer</span>
                 </h1>
-                <p className="text-2xl text-primary font-light tracking-wide animate-fade-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                <p className="text-xl sm:text-2xl text-primary font-light tracking-wide animate-fade-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
                   Warehouse Logistics Systems
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h2 className="text-3xl font-light text-muted-foreground">
+              <div className="space-y-3 md:space-y-4">
+                <h2 className="text-2xl sm:text-3xl font-light text-muted-foreground">
                   Hi, I'm <span className="text-primary font-medium">Amaan Nazir</span>
                 </h2>
 
-              <p className="text-lg text-muted-foreground leading-relaxed font-light max-w-xl">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light max-w-xl">
                   First-Class Software Engineering graduate and Full-Stack Systems Developer with a proven track record at NEXT.
                   Leveraged a high-impact placement year into a full-time role, earning a rapid promotion to Mid-Level Developer in just 18 months.
                   Specialises in modernising and engineering critical warehouse logistics systems using C#, .NET, Blazor, ASP.NET Core,
@@ -61,20 +61,20 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all" asChild>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all w-full sm:w-auto" asChild>
                   <a href="/Amaan_Nazir_CV.pdf" download="Amaan_Nazir_CV.pdf">
                     <Download className="w-5 h-5" />
                     DOWNLOAD CV
                   </a>
                 </Button>
-                <Button size="lg" asChild>
+                <Button size="lg" className="w-full sm:w-auto" asChild>
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
                     CONNECT
                   </a>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
                   <a href="mailto:amaan-619@hotmail.co.uk">
                     <Mail className="w-5 h-5" />
                     EMAIL
