@@ -21,8 +21,8 @@ const Stats = () => {
             headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <div className="glass-card rounded-3xl p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="glass-card rounded-2xl md:rounded-3xl p-6 md:p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               {statsData.map((stat, index) => (
                 <StatItem key={index} {...stat} index={index} isVisible={headerAnimation.isVisible} />
               ))}
@@ -51,10 +51,10 @@ const StatItem = ({ number, suffix, label, index, isVisible }: {
 
   return (
     <div className="text-center group">
-      <div className="text-4xl md:text-5xl font-light text-primary mb-2 transition-all duration-300 group-hover:scale-110">
+      <div className="text-3xl sm:text-4xl md:text-5xl font-light text-primary mb-1 md:mb-2 transition-all duration-300 group-hover:scale-110">
         {count}{suffix}
       </div>
-      <div className="text-sm text-muted-foreground font-light">{label}</div>
+      <div className="text-xs sm:text-sm text-muted-foreground font-light leading-tight">{label}</div>
     </div>
   );
 };

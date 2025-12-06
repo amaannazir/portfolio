@@ -47,11 +47,11 @@ const SkillsRadar = () => {
         <div className="max-w-4xl mx-auto">
           <div
             ref={headerAnimation.ref}
-            className={`text-center mb-12 transition-all duration-700 ${
+            className={`text-center mb-8 md:mb-12 transition-all duration-700 ${
               headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
               Skill <span className="text-primary">Proficiency</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light">
@@ -59,8 +59,47 @@ const SkillsRadar = () => {
             </p>
           </div>
 
-          <div className="glass-card rounded-3xl p-8 md:p-12">
-            <ResponsiveContainer width="100%" height={450}>
+          <div className="glass-card rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12">
+            <ResponsiveContainer width="100%" height={350} className="sm:hidden">
+              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={skillsData}>
+                <PolarGrid 
+                  stroke="hsl(var(--muted-foreground))" 
+                  strokeOpacity={0.2}
+                  strokeDasharray="3 3"
+                />
+                <PolarAngleAxis
+                  dataKey="skill"
+                  tick={{ 
+                    fill: "hsl(var(--foreground))", 
+                    fontSize: 9,
+                    fontWeight: 300
+                  }}
+                  tickLine={false}
+                />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, 100]}
+                  tick={false}
+                  axisLine={false}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <Radar
+                  name="Proficiency"
+                  dataKey="proficiency"
+                  stroke="hsl(var(--primary))"
+                  fill="hsl(var(--primary))"
+                  fillOpacity={0.3}
+                  strokeWidth={2}
+                  dot={{
+                    r: 3,
+                    fill: "hsl(var(--primary))",
+                    strokeWidth: 1,
+                    stroke: "hsl(var(--background))",
+                  }}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+            <ResponsiveContainer width="100%" height={450} className="hidden sm:block">
               <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillsData}>
                 <PolarGrid 
                   stroke="hsl(var(--muted-foreground))" 
@@ -110,15 +149,15 @@ const SkillsRadar = () => {
               </RadarChart>
             </ResponsiveContainer>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
               {skillsData.map((item) => (
                 <div
                   key={item.skill}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 transition-all duration-300 hover:bg-primary/20 hover:scale-105 cursor-default"
+                  className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-primary/10 border border-primary/20 transition-all duration-300 hover:bg-primary/20 hover:scale-105 cursor-default"
                 >
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm font-light">{item.skill}</span>
-                  <span className="text-xs text-primary font-medium">{item.proficiency}%</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary" />
+                  <span className="text-xs md:text-sm font-light">{item.skill}</span>
+                  <span className="text-[10px] md:text-xs text-primary font-medium">{item.proficiency}%</span>
                 </div>
               ))}
             </div>
