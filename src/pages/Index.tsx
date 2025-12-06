@@ -16,6 +16,7 @@ import CursorTrail from "@/components/CursorTrail";
 import Certifications from "@/components/Certifications";
 import WorkedWith from "@/components/WorkedWith";
 import TechStack from "@/components/TechStack";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
   return (
@@ -29,14 +30,39 @@ const Index = () => {
       <div className="relative z-10">
         <Navigation />
         <Hero />
-        <WorkedWith />
-        <Stats />
-        <Projects />
-        <Skills />
-        <TechStack />
-        <InteractiveTimeline />
-        <Certifications />
-        <Contact />
+        
+        <AnimatedSection delay={0.1}>
+          <WorkedWith />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1} direction="up">
+          <Stats />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.15} direction="up">
+          <Projects />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1} direction="left">
+          <Skills />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1} direction="right">
+          <TechStack />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.15} direction="up">
+          <InteractiveTimeline />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1} direction="up">
+          <Certifications />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.2} direction="up">
+          <Contact />
+        </AnimatedSection>
+        
         <Footer />
       </div>
       <BackToTop />
