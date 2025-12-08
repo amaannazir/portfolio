@@ -14,13 +14,13 @@ const AbstractShapes = () => {
 
   return (
     <>
-      {/* Full-width gradient overlay - slow parallax to last entire page */}
+      {/* Full-width gradient overlay - moves up slowly as you scroll to stay visible */}
       <div
         className="fixed inset-0 pointer-events-none z-0 parallax"
         style={{
           background: "linear-gradient(135deg, transparent 0%, hsl(18, 90%, 60%) 40%, hsl(25, 85%, 55%) 70%, hsl(30, 80%, 50%) 100%)",
           opacity: 0.15,
-          transform: `translateY(${scrollY * 0.08}px)`,
+          transform: `translateY(${scrollY * -0.05}px)`,
         }}
       />
       
