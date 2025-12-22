@@ -24,10 +24,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: "Home", id: "about" },
+    { label: "About", id: "about" },
+    { label: "Services", id: "services" },
     { label: "Projects", id: "projects" },
     { label: "Skills", id: "skills" },
-    { label: "Stack", id: "stack" },
     { label: "Experience", id: "experience" },
     { label: "Contact", id: "contact" },
   ];
