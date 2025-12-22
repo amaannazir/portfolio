@@ -32,6 +32,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [honeypot, setHoneypot] = useState(""); // Hidden honeypot field for bot detection
   const [isSubmitting, setIsSubmitting] = useState(false);
   const headerAnimation = useScrollAnimation(0.1);
   const formAnimation = useScrollAnimation<HTMLFormElement>(0.1);
@@ -52,7 +53,7 @@ const Contact = () => {
 
     try {
       const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData,
+        body: { ...formData, honeypot }, // Include honeypot in submission
       });
 
       if (error) {
@@ -135,6 +136,18 @@ const Contact = () => {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="bg-card border-border focus:border-primary transition-colors resize-none"
+              />
+            </div>
+
+            {/* Honeypot field - hidden from users, catches bots */}
+            <div className="absolute -left-[9999px]" aria-hidden="true">
+              <Input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
               />
             </div>
 
