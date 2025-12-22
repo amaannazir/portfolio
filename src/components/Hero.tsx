@@ -8,6 +8,14 @@ const Hero = () => {
   const textAnimation = useScrollAnimation(0.1);
   const imageAnimation = useScrollAnimation(0.1);
   const [scrollY, setScrollY] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Preload image for faster display
+  useEffect(() => {
+    const img = new Image();
+    img.src = profileImage;
+    img.onload = () => setImageLoaded(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,10 +104,21 @@ const Hero = () => {
               <div className="relative">
                 {/* Glowing effect behind image */}
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-110"></div>
+                
+                {/* Skeleton placeholder while loading */}
+                {!imageLoaded && (
+                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary/30 shadow-2xl bg-muted animate-pulse" />
+                )}
+                
                 <img
                   src={profileImage}
                   alt="Amaan Nazir - Full-Stack Software Developer"
-                  className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl"
+                  className={`relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl transition-opacity duration-300 ${
+                    imageLoaded ? "opacity-100" : "opacity-0 absolute"
+                  }`}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </div>
             </div>
