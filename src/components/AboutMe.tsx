@@ -19,10 +19,10 @@ const AboutMe = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-            About Me
+          <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
+            About <span className="text-primary">Me</span>
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground font-light">
             Get to know the person behind the code
           </p>
         </div>
@@ -52,12 +52,6 @@ const AboutMe = () => {
               Beyond coding, I'm driven by continuous learning and staying at the forefront 
               of technology. I believe great software is built through collaboration, 
               attention to detail, and a genuine understanding of user needs.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-              When I'm not building digital experiences, you'll find me exploring new 
-              technologies, contributing to open-source projects, or mentoring aspiring 
-              developers in the community.
             </p>
           </div>
 
