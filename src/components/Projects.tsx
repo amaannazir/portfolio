@@ -5,6 +5,7 @@ import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
 import halalDeliveryImage from "@/assets/project-halal-delivery.jpg";
 import gwosImage from "@/assets/project-gwos.jpg";
+import snakeSpectrumImage from "@/assets/project-snake-spectrum.png";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const projectsData = [
@@ -13,7 +14,7 @@ const projectsData = [
     description:
       "A completely reimagined Snake game built for mobile and web with ultra-smooth 60 FPS gameplay, a custom 'Tube' rendering engine for organic fluid movement, and a massive 120-level campaign across 12 world themes. Features power-ups (Magnet, Shield, Poison), deep cosmetic customization (skins, scales, trails), precision swipe/keyboard controls with Dash mechanics, and an infinite Endless Mode.",
     technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API", "Mobile-First", "Game Development"],
-    image: halalDeliveryImage,
+    image: snakeSpectrumImage,
     github: "https://github.com/amaannazir/SnakeSpectrum",
   },
   {
