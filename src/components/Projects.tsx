@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
+import { Button } from "./ui/button";
 import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
@@ -16,6 +17,7 @@ const projectsData = [
     technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API", "Mobile-First", "Game Development"],
     image: snakeSpectrumImage,
     github: "https://github.com/amaannazir/SnakeSpectrum",
+    liveDemo: "https://amaannazir.github.io/SnakeSpectrum/",
   },
   {
     title: "Halal Meat Delivery Platform",
@@ -62,6 +64,7 @@ interface ProjectCardProps {
     technologies: string[];
     image: string;
     github?: string;
+    liveDemo?: string;
   };
   index: number;
 }
@@ -90,7 +93,20 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       <CardHeader>
         <CardTitle className="text-xl font-light tracking-wide">{project.title}</CardTitle>
-        <CardDescription className="text-base leading-relaxed font-light">
+        {project.liveDemo && (
+          <a
+            href={project.liveDemo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2"
+          >
+            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium gap-2 animate-pulse hover:animate-none">
+              <Play size={18} fill="currentColor" />
+              Play Now
+            </Button>
+          </a>
+        )}
+        <CardDescription className="text-base leading-relaxed font-light mt-3">
           {project.description}
         </CardDescription>
       </CardHeader>
