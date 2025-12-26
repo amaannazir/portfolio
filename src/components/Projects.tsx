@@ -9,6 +9,14 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const projectsData = [
   {
+    title: "Snake: Spectrum",
+    description:
+      "A completely reimagined Snake game built for mobile and web with ultra-smooth 60 FPS gameplay, a custom 'Tube' rendering engine for organic fluid movement, and a massive 120-level campaign across 12 world themes. Features power-ups (Magnet, Shield, Poison), deep cosmetic customization (skins, scales, trails), precision swipe/keyboard controls with Dash mechanics, and an infinite Endless Mode.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API", "Mobile-First", "Game Development"],
+    image: halalDeliveryImage,
+    github: "https://github.com/amaannazir/SnakeSpectrum",
+  },
+  {
     title: "Halal Meat Delivery Platform",
     description:
       "Final year personal dissertation project addressing a real-world issue: enabling students to order and purchase halal meats directly to their home or accommodation. Full-featured e-commerce platform with Stripe payment integration, shopping cart system, user accounts, delivery forms, and student email validation—just like ordering anything online with a complete checkout experience.",
