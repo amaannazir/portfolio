@@ -54,6 +54,73 @@ const projectsData = [
   },
 ];
 
+interface ProjectCardProps {
+  project: {
+    title: string;
+    description: string;
+    technologies: string[];
+    image: string;
+    github?: string;
+  };
+  index: number;
+}
+
+const ProjectCard = ({ project, index }: ProjectCardProps) => {
+  const cardAnimation = useScrollAnimation(0.1);
+
+  return (
+    <Card
+      ref={cardAnimation.ref}
+      className={`glass-card group overflow-hidden border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 ${
+        cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
+      }`}
+      style={{ 
+        animationDelay: `${index * 0.1}s`,
+        transition: 'all 0.3s ease-out'
+      }}
+    >
+      <div className="aspect-video overflow-hidden bg-muted">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
+        />
+      </div>
+
+      <CardHeader>
+        <CardTitle className="text-xl font-light tracking-wide">{project.title}</CardTitle>
+        <CardDescription className="text-base leading-relaxed font-light">
+          {project.description}
+        </CardDescription>
+      </CardHeader>
+
+      <CardContent>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.technologies.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="px-3 py-1 text-xs font-light bg-transparent text-primary rounded-full border border-primary/30"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+          >
+            <ExternalLink size={16} />
+            View on GitHub
+          </a>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
 const Projects = () => {
   const headerAnimation = useScrollAnimation(0.1);
 
@@ -76,63 +143,9 @@ const Projects = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.map((project, index) => {
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const cardAnimation = useScrollAnimation(0.1);
-              
-              return (
-                <Card
-                  key={index}
-                  ref={cardAnimation.ref}
-                  className={`glass-card group overflow-hidden border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 ${
-                    cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
-                  }`}
-                  style={{ 
-                    animationDelay: `${index * 0.1}s`,
-                    transition: 'all 0.3s ease-out'
-                  }}
-                >
-                <div className="aspect-video overflow-hidden bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
-                  />
-                </div>
-
-                <CardHeader>
-                  <CardTitle className="text-xl font-light tracking-wide">{project.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed font-light">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 text-xs font-light bg-transparent text-primary rounded-full border border-primary/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-                    >
-                      <ExternalLink size={16} />
-                      View on GitHub
-                    </a>
-                  )}
-                </CardContent>
-              </Card>
-              );
-            })}
+            {projectsData.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
+            ))}
           </div>
         </div>
       </div>
