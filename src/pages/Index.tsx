@@ -38,6 +38,10 @@ const Index = () => {
           <WorkedWith />
         </AnimatedSection>
         
+        <AnimatedSection delay={0.15} direction="up">
+          <Projects />
+        </AnimatedSection>
+        
         <AnimatedSection delay={0.1} direction="up">
           <AboutMe />
         </AnimatedSection>
@@ -48,10 +52,6 @@ const Index = () => {
         
         <AnimatedSection delay={0.1} direction="up">
           <Stats />
-        </AnimatedSection>
-        
-        <AnimatedSection delay={0.15} direction="up">
-          <Projects />
         </AnimatedSection>
         
         <AnimatedSection delay={0.1} direction="left">
