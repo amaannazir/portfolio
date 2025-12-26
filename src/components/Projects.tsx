@@ -100,9 +100,10 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             rel="noopener noreferrer"
             className="mt-2"
           >
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium gap-2 animate-pulse hover:animate-none">
-              <Play size={18} fill="currentColor" />
-              Play Now
+            <Button className="w-full bg-gradient-to-r from-primary via-primary/80 to-primary text-primary-foreground font-medium gap-2 relative overflow-hidden group shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-shadow duration-500 animate-[gentle-pulse_3s_ease-in-out_infinite]">
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out animate-[shimmer_3s_ease-in-out_infinite]" />
+              <Play size={18} fill="currentColor" className="relative z-10" />
+              <span className="relative z-10">Play Now</span>
             </Button>
           </a>
         )}
