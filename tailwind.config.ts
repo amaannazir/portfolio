@@ -114,12 +114,32 @@ export default {
             transform: "scale(1) translateY(0)",
           },
         },
+        "gentle-pulse": {
+          "0%, 100%": {
+            opacity: "1",
+            boxShadow: "0 0 15px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2)",
+          },
+          "50%": {
+            opacity: "0.9",
+            boxShadow: "0 0 25px hsl(var(--primary) / 0.6), 0 0 50px hsl(var(--primary) / 0.3)",
+          },
+        },
+        "shimmer": {
+          "0%": {
+            transform: "translateX(-100%)",
+          },
+          "50%, 100%": {
+            transform: "translateX(100%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.6s ease-out",
         "bounce-in": "bounce-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "gentle-pulse": "gentle-pulse 3s ease-in-out infinite",
+        "shimmer": "shimmer 3s ease-in-out infinite",
       },
     },
   },
