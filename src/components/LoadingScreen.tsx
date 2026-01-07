@@ -15,13 +15,13 @@ const LoadingScreen = () => {
 
   return (
     <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center animate-fade-out" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
-      <div className="text-center space-y-6">
-        <h1 className="text-6xl md:text-8xl font-light tracking-tight animate-fade-in">
+      <div className="text-center space-y-8">
+        <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight animate-fade-in">
           <span className="text-foreground">Amaan</span>
-          <span className="text-primary"> Nazir</span>
+          <span className="gradient-text"> Nazir</span>
         </h1>
-        <div className="w-64 h-1 bg-muted rounded-full overflow-hidden mx-auto">
-          <div className="h-full bg-gradient-to-r from-primary to-accent animate-[slide-in-right_1.5s_ease-out]" />
+        <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full overflow-hidden mx-auto">
+          <div className="h-full w-full bg-gradient-to-r from-primary via-primary to-primary/80 animate-[slide-in-right_1.5s_ease-out]" />
         </div>
       </div>
     </div>

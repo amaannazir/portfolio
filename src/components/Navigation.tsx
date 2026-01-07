@@ -35,21 +35,23 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled 
+            ? "bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-sm" 
+            : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 py-4 md:py-5">
           <div className="flex items-center justify-between">
             <button
               onClick={() => scrollToSection("about")}
-              className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-medium text-foreground hover:text-primary transition-colors tracking-wide"
+              className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-medium text-foreground hover:text-primary transition-all duration-300 tracking-wide group"
             >
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-foreground flex items-center justify-center">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-foreground/80 flex items-center justify-center group-hover:border-primary group-hover:scale-105 transition-all duration-300">
                 <User className="w-4 h-4 md:w-5 md:h-5" />
               </div>
-              <span className="hidden xs:inline">AMAAN NAZIR</span>
-              <span className="xs:hidden">AN</span>
+              <span className="hidden xs:inline font-serif">AMAAN NAZIR</span>
+              <span className="xs:hidden font-serif">AN</span>
             </button>
 
             <div className="flex items-center gap-4 md:gap-8">
@@ -58,7 +60,7 @@ const Navigation = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-foreground hover:text-primary transition-colors font-light tracking-wider"
+                    className="link-elegant text-foreground hover:text-primary transition-colors font-light tracking-wider text-sm uppercase"
                   >
                     {item.label}
                   </button>
@@ -67,7 +69,7 @@ const Navigation = () => {
 
               <div className="flex items-center gap-2 md:gap-3">
                 <ThemeToggle />
-                <Button variant="outline" size="sm" asChild className="hidden sm:flex">
+                <Button variant="outline" size="sm" asChild className="hidden sm:flex backdrop-blur-sm hover:border-primary/50 transition-all">
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
                     Connect
                   </a>
