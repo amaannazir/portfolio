@@ -75,39 +75,39 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   return (
     <Card
       ref={cardAnimation.ref}
-      className={`glass-card group overflow-hidden border-border hover:border-primary/70 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 ${
+      className={`glass-card group overflow-hidden transition-all duration-500 ${
         cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
       }`}
       style={{ 
         animationDelay: `${index * 0.1}s`,
-        transition: 'all 0.3s ease-out'
       }}
     >
-      <div className="aspect-video overflow-hidden bg-muted">
+      <div className="aspect-video overflow-hidden bg-muted relative">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-2"
+          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
         />
+        {/* Elegant overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
-      <CardHeader>
-        <CardTitle className="text-xl font-light tracking-wide">{project.title}</CardTitle>
+      <CardHeader className="space-y-3">
+        <CardTitle className="text-xl font-serif font-medium tracking-wide">{project.title}</CardTitle>
         {project.liveDemo && (
           <a
             href={project.liveDemo}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2"
           >
-            <Button className="w-full bg-gradient-to-r from-primary via-primary/80 to-primary text-primary-foreground font-medium gap-2 relative overflow-hidden group shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-shadow duration-500 animate-[gentle-pulse_3s_ease-in-out_infinite]">
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out animate-[shimmer_3s_ease-in-out_infinite]" />
+            <Button className="w-full btn-luxury text-primary-foreground font-medium gap-2 relative overflow-hidden group/btn">
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-out" />
               <Play size={18} fill="currentColor" className="relative z-10" />
               <span className="relative z-10">Play Now</span>
             </Button>
           </a>
         )}
-        <CardDescription className="text-base leading-relaxed font-light mt-3">
+        <CardDescription className="text-base leading-relaxed font-light">
           {project.description}
         </CardDescription>
       </CardHeader>
@@ -117,7 +117,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {project.technologies.map((tech, techIndex) => (
             <span
               key={techIndex}
-              className="px-3 py-1 text-xs font-light bg-transparent text-primary rounded-full border border-primary/30"
+              className="luxury-badge px-3 py-1 text-xs font-medium text-primary rounded-full"
             >
               {tech}
             </span>
@@ -128,7 +128,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+            className="link-elegant inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
           >
             <ExternalLink size={16} />
             View on GitHub
@@ -144,7 +144,10 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-32 relative">
-      <div className="container mx-auto px-6">
+      {/* Subtle section gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/3 to-transparent pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div 
             ref={headerAnimation.ref}
@@ -152,10 +155,11 @@ const Projects = () => {
               headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
-              Featured <span className="text-primary">Projects</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium mb-6 tracking-tight">
+              Featured <span className="gradient-text">Projects</span>
             </h2>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 mx-auto mb-6 rounded-full" />
+            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
               From enterprise solutions powering multi-million pound warehouse operations at NEXT to creative personal projects like games and full-stack e-commerce applications
             </p>
           </div>
