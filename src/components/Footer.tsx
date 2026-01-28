@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone, Github, Heart } from "lucide-react";
+import { Linkedin, Mail, Phone, Github, Heart, ArrowUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
@@ -27,6 +27,34 @@ const Footer = () => {
     },
   ];
 
+  const navLinks = [
+    { name: "Projects", href: "#projects" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Experience", href: "#experience" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="relative z-10 overflow-hidden">
       {/* Gradient Background */}
@@ -50,6 +78,22 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap justify-center gap-6 md:gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+                className="text-muted-foreground hover:text-primary text-sm font-light tracking-wide link-elegant transition-colors duration-300"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <Separator className="w-32 bg-border/50" />
+
           {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => (
@@ -67,6 +111,16 @@ const Footer = () => {
                 <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
               </a>
             ))}
+
+            {/* Back to Top Button */}
+            <button
+              onClick={scrollToTop}
+              className="group relative p-3 rounded-full glass-card hover:border-primary/40 transition-all duration-300 ml-2"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+              <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+            </button>
           </div>
 
           <Separator className="w-24 bg-border/50" />
