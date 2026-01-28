@@ -74,7 +74,7 @@ const Footer = () => {
               <span className="gradient-text">Nazir</span>
             </h3>
             <p className="text-muted-foreground text-sm mt-2 font-light tracking-wide">
-              Full Stack Developer & Solutions Architect
+              Full Stack Developer
             </p>
           </div>
 
