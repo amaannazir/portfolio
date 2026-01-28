@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   name: z
@@ -32,7 +33,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [honeypot, setHoneypot] = useState(""); // Hidden honeypot field for bot detection
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const headerAnimation = useScrollAnimation(0.1);
   const formAnimation = useScrollAnimation<HTMLFormElement>(0.1);
@@ -40,7 +41,6 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate form data
     const result = contactSchema.safeParse(formData);
 
     if (!result.success) {
@@ -53,7 +53,7 @@ const Contact = () => {
 
     try {
       const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: { ...formData, honeypot }, // Include honeypot in submission
+        body: { ...formData, honeypot },
       });
 
       if (error) {
@@ -76,28 +76,35 @@ const Contact = () => {
     <section id="contact" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto">
-          <div 
+          <motion.div 
             ref={headerAnimation.ref}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
-              Get In <span className="text-primary">Touch</span>
+            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight font-serif">
+              Get In <span className="gradient-text">Touch</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light">
               Let's discuss how I can contribute to your team's success
             </p>
-          </div>
+          </motion.div>
 
-          <form 
+          <motion.form 
             ref={formAnimation.ref}
             onSubmit={handleSubmit} 
-            className={`glass-card p-8 rounded-2xl space-y-6 transition-all duration-700 ${
-              formAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
-            }`}
+            className="glass-card p-8 rounded-2xl space-y-6"
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={formAnimation.isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.98 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            <div className="space-y-2">
+            <motion.div 
+              className="space-y-2"
+              initial={{ opacity: 0, x: -10 }}
+              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
               <Label htmlFor="name" className="font-light tracking-wide">
                 Your Name
               </Label>
@@ -107,11 +114,16 @@ const Contact = () => {
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-card border-border focus:border-primary transition-colors"
+                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
               />
-            </div>
+            </motion.div>
 
-            <div className="space-y-2">
+            <motion.div 
+              className="space-y-2"
+              initial={{ opacity: 0, x: -10 }}
+              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+            >
               <Label htmlFor="email" className="font-light tracking-wide">
                 Your Email
               </Label>
@@ -121,11 +133,16 @@ const Contact = () => {
                 placeholder="youremailaddress@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-card border-border focus:border-primary transition-colors"
+                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
               />
-            </div>
+            </motion.div>
 
-            <div className="space-y-2">
+            <motion.div 
+              className="space-y-2"
+              initial={{ opacity: 0, x: -10 }}
+              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+            >
               <Label htmlFor="message" className="font-light tracking-wide">
                 Message
               </Label>
@@ -135,11 +152,11 @@ const Contact = () => {
                 rows={6}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-card border-border focus:border-primary transition-colors resize-none"
+                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 resize-none focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
               />
-            </div>
+            </motion.div>
 
-            {/* Honeypot field - hidden from users, catches bots */}
+            {/* Honeypot field */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <Input
                 type="text"
@@ -151,10 +168,21 @@ const Contact = () => {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
-            </Button>
-          </form>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={formAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+            >
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full btn-luxury text-primary-foreground font-medium" 
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+              </Button>
+            </motion.div>
+          </motion.form>
         </div>
       </div>
     </section>
