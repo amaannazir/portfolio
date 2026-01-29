@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
@@ -8,6 +8,7 @@ import halalDeliveryImage from "@/assets/project-halal-delivery.jpg";
 import gwosImage from "@/assets/project-gwos.jpg";
 import snakeSpectrumImage from "@/assets/project-snake-spectrum.png";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { motion } from "framer-motion";
 
 const projectsData = [
   {
@@ -18,6 +19,7 @@ const projectsData = [
     image: snakeSpectrumImage,
     github: "https://github.com/amaannazir/SnakeSpectrum",
     liveDemo: "https://amaannazir.github.io/SnakeSpectrum/",
+    featured: true,
   },
   {
     title: "Halal Meat Delivery Platform",
@@ -65,6 +67,7 @@ interface ProjectCardProps {
     image: string;
     github?: string;
     liveDemo?: string;
+    featured?: boolean;
   };
   index: number;
 }
@@ -73,69 +76,81 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const cardAnimation = useScrollAnimation(0.1);
 
   return (
-    <Card
+    <motion.div
       ref={cardAnimation.ref}
-      className={`glass-card group overflow-hidden transition-all duration-500 ${
-        cardAnimation.isVisible ? "animate-bounce-in" : "opacity-0"
-      }`}
-      style={{ 
-        animationDelay: `${index * 0.1}s`,
-      }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={cardAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
     >
-      <div className="aspect-video overflow-hidden bg-muted relative">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-        />
-        {/* Elegant overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      </div>
-
-      <CardHeader className="space-y-3">
-        <CardTitle className="text-xl font-serif font-medium tracking-wide">{project.title}</CardTitle>
-        {project.liveDemo && (
-          <a
-            href={project.liveDemo}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="w-full btn-luxury text-primary-foreground font-medium gap-2 relative overflow-hidden group/btn">
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-out" />
-              <Play size={18} fill="currentColor" className="relative z-10" />
-              <span className="relative z-10">Play Now</span>
-            </Button>
-          </a>
-        )}
-        <CardDescription className="text-base leading-relaxed font-light">
-          {project.description}
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="luxury-badge px-3 py-1 text-xs font-medium text-primary rounded-full"
-            >
-              {tech}
-            </span>
-          ))}
+      <Card className={`glass-card group overflow-hidden h-full ${project.featured ? 'ring-2 ring-primary/30' : ''}`}>
+        <div className="aspect-video overflow-hidden bg-muted relative">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {project.featured && (
+            <div className="absolute top-3 left-3 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+              Featured
+            </div>
+          )}
         </div>
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-elegant inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-          >
-            <ExternalLink size={16} />
-            View on GitHub
-          </a>
-        )}
-      </CardContent>
-    </Card>
+
+        <CardHeader className="space-y-3">
+          <CardTitle className="text-xl font-display font-semibold tracking-tight group-hover:text-primary transition-colors">
+            {project.title}
+          </CardTitle>
+          {project.liveDemo && (
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="w-full btn-luxury text-primary-foreground font-medium gap-2">
+                <Play size={16} fill="currentColor" />
+                Play Now
+                <ArrowUpRight size={14} className="ml-auto" />
+              </Button>
+            </a>
+          )}
+          <CardDescription className="text-sm leading-relaxed line-clamp-4">
+            {project.description}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.technologies.slice(0, 5).map((tech, techIndex) => (
+              <span
+                key={techIndex}
+                className="luxury-badge px-2.5 py-1 text-xs font-medium text-primary"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 5 && (
+              <span className="px-2.5 py-1 text-xs text-muted-foreground">
+                +{project.technologies.length - 5} more
+              </span>
+            )}
+          </div>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-elegant inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ExternalLink size={14} />
+              View Source
+            </a>
+          )}
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
@@ -143,28 +158,32 @@ const Projects = () => {
   const headerAnimation = useScrollAnimation(0.1);
 
   return (
-    <section id="projects" className="py-32 relative">
-      {/* Subtle section gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/3 to-transparent pointer-events-none" />
+    <section id="projects" className="py-24 md:py-32 relative">
+      {/* Background accent */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div 
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
             ref={headerAnimation.ref}
-            className={`text-center mb-20 transition-all duration-700 ${
-              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium mb-6 tracking-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span>Portfolio</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
               Featured <span className="gradient-text">Projects</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 mx-auto mb-6 rounded-full" />
-            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
-              From enterprise solutions powering multi-million pound warehouse operations at NEXT to creative personal projects like games and full-stack e-commerce applications
+            <div className="accent-line mx-auto mb-6" />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              From enterprise warehouse systems at NEXT to creative personal projects—here's a selection of my work
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projectsData.map((project, index) => (
               <ProjectCard key={index} project={project} index={index} />
             ))}

@@ -8,6 +8,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { motion } from "framer-motion";
+import { Send, Mail, User, MessageSquare } from "lucide-react";
 
 const contactSchema = z.object({
   name: z
@@ -73,30 +74,37 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-24 md:py-32 relative">
+      {/* Background accent */}
+      <div className="absolute inset-0 bg-gradient-to-t from-muted/50 to-transparent pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-2xl mx-auto">
           <motion.div 
             ref={headerAnimation.ref}
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight font-serif">
-              Get In <span className="gradient-text">Touch</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span>Get in Touch</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
+              Let's <span className="gradient-text">Connect</span>
             </h2>
-            <p className="text-lg text-muted-foreground font-light">
-              Let's discuss how I can contribute to your team's success
+            <div className="accent-line mx-auto mb-6" />
+            <p className="text-lg text-muted-foreground">
+              Interested in working together? Drop me a message.
             </p>
           </motion.div>
 
           <motion.form 
             ref={formAnimation.ref}
             onSubmit={handleSubmit} 
-            className="glass-card p-8 rounded-2xl space-y-6"
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={formAnimation.isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.98 }}
+            className="glass-card p-6 md:p-8 rounded-2xl space-y-5"
+            initial={{ opacity: 0, y: 40 }}
+            animate={formAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
             <motion.div 
@@ -105,16 +113,17 @@ const Contact = () => {
               animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              <Label htmlFor="name" className="font-light tracking-wide">
+              <Label htmlFor="name" className="font-medium flex items-center gap-2">
+                <User className="w-4 h-4 text-muted-foreground" />
                 Your Name
               </Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Your Name"
+                placeholder="John Doe"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
+                className="bg-background/50 border-border focus:border-primary transition-all"
               />
             </motion.div>
 
@@ -124,16 +133,17 @@ const Contact = () => {
               animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <Label htmlFor="email" className="font-light tracking-wide">
+              <Label htmlFor="email" className="font-medium flex items-center gap-2">
+                <Mail className="w-4 h-4 text-muted-foreground" />
                 Your Email
               </Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="youremailaddress@example.com"
+                placeholder="john@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
+                className="bg-background/50 border-border focus:border-primary transition-all"
               />
             </motion.div>
 
@@ -143,16 +153,17 @@ const Contact = () => {
               animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.4 }}
             >
-              <Label htmlFor="message" className="font-light tracking-wide">
+              <Label htmlFor="message" className="font-medium flex items-center gap-2">
+                <MessageSquare className="w-4 h-4 text-muted-foreground" />
                 Message
               </Label>
               <Textarea
                 id="message"
                 placeholder="Tell me about your project or opportunity..."
-                rows={6}
+                rows={5}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-card/50 border-border/50 focus:border-primary/50 transition-all duration-300 resize-none focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]"
+                className="bg-background/50 border-border focus:border-primary transition-all resize-none"
               />
             </motion.div>
 
@@ -176,10 +187,17 @@ const Contact = () => {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full btn-luxury text-primary-foreground font-medium" 
+                className="w-full btn-luxury text-primary-foreground font-medium gap-2" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </motion.div>
           </motion.form>

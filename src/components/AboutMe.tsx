@@ -1,83 +1,87 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { User, Heart, Coffee, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
+import { User, Lightbulb, Heart, Zap } from "lucide-react";
 
 const AboutMe = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const traits = [
-    { icon: Lightbulb, label: "Problem Solver", description: "I love tackling complex challenges" },
-    { icon: Heart, label: "Passionate", description: "Dedicated to crafting quality solutions" },
-    { icon: Coffee, label: "Detail-Oriented", description: "Every pixel and line of code matters" },
+    { icon: Lightbulb, label: "Problem Solver", description: "Tackling complex challenges with elegant solutions", color: "from-amber-500 to-orange-500" },
+    { icon: Heart, label: "Passionate", description: "Dedicated to crafting quality code and experiences", color: "from-rose-500 to-pink-500" },
+    { icon: Zap, label: "Detail-Oriented", description: "Every line of code and pixel matters", color: "from-primary to-violet" },
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 px-4 md:px-8 relative">
-      <div className="max-w-6xl mx-auto">
-        <div
-          ref={ref}
-          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
-            About <span className="text-primary">Me</span>
-          </h2>
-          <p className="text-lg text-muted-foreground font-light">
-            Get to know the person behind the code
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* About Content */}
-          <div
-            className={`space-y-6 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-            }`}
+    <section className="py-16 md:py-24 relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            ref={ref}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
-                <User className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-foreground">Who I Am</h3>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <User className="w-4 h-4" />
+              <span>About Me</span>
             </div>
-            
-            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-              I'm a passionate software engineer with a deep love for creating elegant, 
-              efficient, and user-friendly applications. With years of experience across 
-              the full stack, I specialize in turning complex problems into simple, 
-              beautiful solutions.
-            </p>
-            
-            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-              Beyond coding, I'm driven by continuous learning and staying at the forefront 
-              of technology. I believe great software is built through collaboration, 
-              attention to detail, and a genuine understanding of user needs.
-            </p>
-          </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
+              Who I <span className="gradient-text">Am</span>
+            </h2>
+            <div className="accent-line mx-auto" />
+          </motion.div>
 
-          {/* Traits Cards */}
-          <div
-            className={`grid gap-4 transition-all duration-700 delay-400 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            }`}
-          >
-            {traits.map((trait, index) => (
-              <div
-                key={trait.label}
-                className="group p-5 md:p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:bg-card/80 transition-all duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <trait.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* About Content */}
+            <motion.div
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                I'm a passionate software engineer with a deep love for creating elegant, 
+                efficient, and user-friendly applications. With hands-on experience at NEXT 
+                building enterprise-scale systems, I specialize in turning complex problems 
+                into simple, beautiful solutions.
+              </p>
+              
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                Beyond coding, I'm driven by continuous learning and staying at the forefront 
+                of technology. I believe great software is built through collaboration, 
+                attention to detail, and a genuine understanding of user needs.
+              </p>
+            </motion.div>
+
+            {/* Traits Cards */}
+            <motion.div
+              className="grid gap-4"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
+              {traits.map((trait, index) => (
+                <motion.div
+                  key={trait.label}
+                  className="group glass-card p-5 md:p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1, ease: "easeOut" }}
+                  whileHover={{ x: 8 }}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${trait.color} shadow-lg`}>
+                      <trait.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-display font-semibold text-foreground text-base md:text-lg">{trait.label}</h4>
+                      <p className="text-muted-foreground text-sm">{trait.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground text-base md:text-lg">{trait.label}</h4>
-                    <p className="text-muted-foreground text-sm">{trait.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
