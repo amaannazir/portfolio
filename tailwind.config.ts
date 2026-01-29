@@ -22,10 +22,13 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'sans-serif'],
       },
       colors: {
+        coral: "hsl(var(--accent-coral))",
+        mint: "hsl(var(--accent-mint))",
+        violet: "hsl(var(--accent-violet))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

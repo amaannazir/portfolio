@@ -59,21 +59,20 @@ const Footer = () => {
     <footer className="relative z-10 overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-muted/50 via-background to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(var(--primary)/0.05),transparent_70%)]" />
       
       {/* Decorative top border */}
       <div className="section-divider" />
       
-      <div className="container mx-auto px-6 py-12 relative">
+      <div className="container mx-auto px-6 py-12 md:py-16 relative">
         {/* Main Footer Content */}
         <div className="flex flex-col items-center gap-8">
           {/* Logo/Name */}
           <div className="text-center">
-            <h3 className="font-serif text-2xl md:text-3xl tracking-tight">
+            <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
               <span className="text-foreground">Amaan</span>{" "}
               <span className="gradient-text">Nazir</span>
             </h3>
-            <p className="text-muted-foreground text-sm mt-2 font-light tracking-wide">
+            <p className="text-muted-foreground text-sm mt-2">
               Full Stack Developer
             </p>
           </div>
@@ -85,7 +84,7 @@ const Footer = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
-                className="text-muted-foreground hover:text-primary text-sm font-light tracking-wide link-elegant transition-colors duration-300"
+                className="text-muted-foreground hover:text-primary text-sm font-medium link-elegant transition-colors"
               >
                 {link.name}
               </a>
@@ -95,31 +94,27 @@ const Footer = () => {
           <Separator className="w-32 bg-border/50" />
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 target={link.name !== "Email" && link.name !== "Phone" ? "_blank" : undefined}
                 rel={link.name !== "Email" && link.name !== "Phone" ? "noopener noreferrer" : undefined}
-                className="group relative p-3 rounded-full glass-card hover:border-primary/40 transition-all duration-300"
+                className="group p-3 rounded-xl bg-muted/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 aria-label={link.name}
               >
-                <link.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+                <link.icon className="w-5 h-5" />
               </a>
             ))}
 
             {/* Back to Top Button */}
             <button
               onClick={scrollToTop}
-              className="group relative p-3 rounded-full glass-card hover:border-primary/40 transition-all duration-300 ml-2"
+              className="group p-3 rounded-xl bg-muted/50 hover:bg-primary hover:text-primary-foreground transition-all duration-300 ml-2"
               aria-label="Back to top"
             >
-              <ArrowUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-              <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+              <ArrowUp className="w-5 h-5" />
             </button>
           </div>
 
@@ -127,11 +122,11 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="flex flex-col md:flex-row items-center gap-2 text-center">
-            <p className="text-muted-foreground text-sm font-light tracking-wide">
+            <p className="text-muted-foreground text-sm">
               © {currentYear} Amaan Nazir. All rights reserved.
             </p>
             <span className="hidden md:inline text-muted-foreground/50">•</span>
-            <p className="text-muted-foreground text-sm font-light tracking-wide flex items-center gap-1">
+            <p className="text-muted-foreground text-sm flex items-center gap-1">
               Crafted with <Heart className="w-3 h-3 text-primary fill-primary" /> in the UK
             </p>
           </div>

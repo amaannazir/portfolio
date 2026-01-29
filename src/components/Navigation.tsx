@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Menu, X } from "lucide-react";
+import { User, Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,51 +36,52 @@ const Navigation = () => {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-background/80 backdrop-blur-2xl border-b border-border/30 shadow-sm" 
+            ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-sm" 
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="container mx-auto px-4 md:px-6 py-4 md:py-5">
+        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <motion.button
               onClick={() => scrollToSection("about")}
-              className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-medium text-foreground hover:text-primary transition-all duration-300 tracking-wide group"
+              className="flex items-center gap-2 md:gap-3 text-lg font-display font-semibold text-foreground hover:text-primary transition-colors group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-foreground/80 flex items-center justify-center group-hover:border-primary group-hover:scale-105 transition-all duration-300">
-                <User className="w-4 h-4 md:w-5 md:h-5" />
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-violet flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary/25 transition-all">
+                <User className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <span className="hidden xs:inline font-serif">AMAAN NAZIR</span>
-              <span className="xs:hidden font-serif">AN</span>
+              <span className="hidden xs:inline">AMAAN NAZIR</span>
+              <span className="xs:hidden">AN</span>
             </motion.button>
 
-            <div className="flex items-center gap-4 md:gap-8">
-              <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="hidden md:flex items-center gap-6">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="link-elegant text-foreground hover:text-primary transition-colors font-light tracking-wider text-sm uppercase"
+                    className="relative link-elegant text-foreground/80 hover:text-foreground transition-colors font-medium text-sm"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -1 }}
                   >
                     {item.label}
                   </motion.button>
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 md:gap-3">
+              <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <Button variant="outline" size="sm" asChild className="hidden sm:flex backdrop-blur-sm hover:border-primary/40 transition-all">
+                <Button size="sm" className="hidden sm:flex btn-luxury text-primary-foreground gap-1.5" asChild>
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
+                    <Sparkles className="w-3.5 h-3.5" />
                     Connect
                   </a>
                 </Button>
@@ -130,12 +131,12 @@ const Navigation = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-6 pt-16">
+            <div className="flex flex-col items-center justify-center h-full gap-8 pt-16">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-2xl font-light text-foreground hover:text-primary transition-colors"
+                  className="text-3xl font-display font-semibold text-foreground hover:text-primary transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
