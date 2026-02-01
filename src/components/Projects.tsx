@@ -116,7 +116,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               </Button>
             </a>
           )}
-          <CardDescription className="text-sm leading-relaxed line-clamp-4">
+          <CardDescription className="text-sm leading-relaxed">
             {project.description}
           </CardDescription>
         </CardHeader>
