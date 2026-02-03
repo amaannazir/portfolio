@@ -19,7 +19,7 @@ import WorkedWith from "@/components/WorkedWith";
 import TechStack from "@/components/TechStack";
 import AnimatedSection from "@/components/AnimatedSection";
 import AboutMe from "@/components/AboutMe";
-import Services from "@/components/Services";
+import CoreCompetencies from "@/components/Services";
 
 const Index = () => {
   return (
@@ -47,7 +47,7 @@ const Index = () => {
         </AnimatedSection>
         
         <AnimatedSection delay={0.1} direction="up">
-          <Services />
+          <CoreCompetencies />
         </AnimatedSection>
         
         <AnimatedSection delay={0.1} direction="up">
