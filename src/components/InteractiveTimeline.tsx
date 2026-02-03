@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from "react";
 const experiences = [
   {
     type: "work",
-    title: "Full-Stack Systems Developer",
+    title: "Full-Stack Systems Software Engineer",
     company: "NEXT LTD",
     period: "Promotion within 18 months",
     date: "2024",
