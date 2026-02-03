@@ -1,166 +1,91 @@
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { motion } from "framer-motion";
+import { Star, Zap, BookOpen } from "lucide-react";
 
-const skillsData = [
-  { skill: "C# & .NET", proficiency: 95, fullMark: 100 },
-  { skill: "ASP.NET Core", proficiency: 90, fullMark: 100 },
-  { skill: "SQL Server", proficiency: 88, fullMark: 100 },
-  { skill: "TypeScript", proficiency: 85, fullMark: 100 },
-  { skill: "CSS", proficiency: 95, fullMark: 100 },
-  { skill: "Blazor", proficiency: 82, fullMark: 100 },
-  { skill: "Entity Framework", proficiency: 88, fullMark: 100 },
-  { skill: "Azure DevOps", proficiency: 80, fullMark: 100 },
-  { skill: "React", proficiency: 78, fullMark: 100 },
-  { skill: "Mobile Dev", proficiency: 75, fullMark: 100 },
+const skillTiers = [
+  {
+    tier: "Expert / Daily Driver",
+    icon: Star,
+    color: "from-amber-500 to-yellow-500",
+    bgColor: "bg-amber-500/10",
+    borderColor: "border-amber-500/30",
+    skills: ["C#", ".NET 8", "ASP.NET Core", "Blazor", "SQL Server", "Entity Framework", "CSS"],
+  },
+  {
+    tier: "Proficient",
+    icon: Zap,
+    color: "from-primary to-blue-500",
+    bgColor: "bg-primary/10",
+    borderColor: "border-primary/30",
+    skills: ["React", "TypeScript", "Azure DevOps", "Git", "REST APIs", "MudBlazor"],
+  },
+  {
+    tier: "Familiar",
+    icon: BookOpen,
+    color: "from-emerald-500 to-teal-500",
+    bgColor: "bg-emerald-500/10",
+    borderColor: "border-emerald-500/30",
+    skills: ["Docker", "PostgreSQL", "React Native", "Node.js", "MongoDB", "AWS"],
+  },
 ];
 
-const CustomTooltip = ({ active, payload }: any) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="glass-card px-4 py-2 rounded-lg border border-primary/20">
-        <p className="text-sm font-medium text-foreground">
-          {payload[0].payload.skill}
-        </p>
-        <p className="text-xs text-primary">
-          Proficiency: {payload[0].value}%
-        </p>
-      </div>
-    );
-  }
-  return null;
-};
-
-const SkillsRadar = () => {
+const SkillTiers = () => {
   const headerAnimation = useScrollAnimation(0.1);
 
   return (
-    <section id="skills-radar" className="py-32 relative">
+    <section id="skills-radar" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <div
+        <div className="max-w-5xl mx-auto">
+          <motion.div
             ref={headerAnimation.ref}
-            className={`text-center mb-8 md:mb-12 transition-all duration-700 ${
-              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
+            className="text-center mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
-              Skill <span className="text-primary">Proficiency</span>
-            </h2>
-            <p className="text-lg text-muted-foreground font-light">
-              Interactive visualization of technical expertise levels
-            </p>
-          </div>
-
-          <div className="glass-card rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12">
-            <ResponsiveContainer width="100%" height={350} className="sm:hidden">
-              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={skillsData}>
-                <PolarGrid 
-                  stroke="hsl(var(--muted-foreground))" 
-                  strokeOpacity={0.2}
-                  strokeDasharray="3 3"
-                />
-                <PolarAngleAxis
-                  dataKey="skill"
-                  tick={{ 
-                    fill: "hsl(var(--foreground))", 
-                    fontSize: 9,
-                    fontWeight: 300
-                  }}
-                  tickLine={false}
-                />
-                <PolarRadiusAxis
-                  angle={90}
-                  domain={[0, 100]}
-                  tick={false}
-                  axisLine={false}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Radar
-                  name="Proficiency"
-                  dataKey="proficiency"
-                  stroke="hsl(var(--primary))"
-                  fill="hsl(var(--primary))"
-                  fillOpacity={0.3}
-                  strokeWidth={2}
-                  dot={{
-                    r: 3,
-                    fill: "hsl(var(--primary))",
-                    strokeWidth: 1,
-                    stroke: "hsl(var(--background))",
-                  }}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-            <ResponsiveContainer width="100%" height={450} className="hidden sm:block">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillsData}>
-                <PolarGrid 
-                  stroke="hsl(var(--muted-foreground))" 
-                  strokeOpacity={0.2}
-                  strokeDasharray="3 3"
-                />
-                <PolarAngleAxis
-                  dataKey="skill"
-                  tick={{ 
-                    fill: "hsl(var(--foreground))", 
-                    fontSize: 12,
-                    fontWeight: 300
-                  }}
-                  tickLine={false}
-                />
-                <PolarRadiusAxis
-                  angle={90}
-                  domain={[0, 100]}
-                  tick={{ 
-                    fill: "hsl(var(--muted-foreground))", 
-                    fontSize: 10 
-                  }}
-                  tickCount={5}
-                  axisLine={false}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Radar
-                  name="Proficiency"
-                  dataKey="proficiency"
-                  stroke="hsl(var(--primary))"
-                  fill="hsl(var(--primary))"
-                  fillOpacity={0.3}
-                  strokeWidth={2}
-                  dot={{
-                    r: 4,
-                    fill: "hsl(var(--primary))",
-                    strokeWidth: 2,
-                    stroke: "hsl(var(--background))",
-                  }}
-                  activeDot={{
-                    r: 6,
-                    fill: "hsl(var(--primary))",
-                    stroke: "hsl(var(--background))",
-                    strokeWidth: 2,
-                  }}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-
-            <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-2 md:gap-4">
-              {skillsData.map((item) => (
-                <div
-                  key={item.skill}
-                  className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-primary/10 border border-primary/20 transition-all duration-300 hover:bg-primary/20 hover:scale-105 cursor-default"
-                >
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary" />
-                  <span className="text-xs md:text-sm font-light">{item.skill}</span>
-                  <span className="text-[10px] md:text-xs text-primary font-medium">{item.proficiency}%</span>
-                </div>
-              ))}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span>Proficiency</span>
             </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
+              Skill <span className="gradient-text">Levels</span>
+            </h2>
+            <div className="accent-line mx-auto mb-6" />
+            <p className="text-lg text-muted-foreground">
+              Technologies organised by experience and daily usage
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {skillTiers.map((tier, tierIndex) => (
+              <motion.div
+                key={tier.tier}
+                className={`glass-card p-6 md:p-8 ${tier.borderColor} border`}
+                initial={{ opacity: 0, x: tierIndex % 2 === 0 ? -30 : 30 }}
+                animate={headerAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: tierIndex % 2 === 0 ? -30 : 30 }}
+                transition={{ duration: 0.5, delay: tierIndex * 0.15, ease: "easeOut" }}
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`p-2.5 rounded-xl bg-gradient-to-br ${tier.color} shadow-lg`}>
+                    <tier.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-display font-semibold">{tier.tier}</h3>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 md:gap-3">
+                  {tier.skills.map((skill, skillIndex) => (
+                    <motion.span
+                      key={skill}
+                      className={`${tier.bgColor} ${tier.borderColor} border px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium text-foreground transition-all duration-300 hover:scale-105 cursor-default`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={headerAnimation.isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3, delay: tierIndex * 0.15 + skillIndex * 0.05 }}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -168,4 +93,4 @@ const SkillsRadar = () => {
   );
 };
 
-export default SkillsRadar;
+export default SkillTiers;

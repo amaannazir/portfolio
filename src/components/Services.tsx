@@ -4,61 +4,61 @@ import {
   Globe, 
   Smartphone, 
   Database, 
-  Palette, 
+  Layers, 
   Zap, 
-  MessageSquare 
+  Users 
 } from "lucide-react";
 
-const Services = () => {
+const CoreCompetencies = () => {
   const { ref, isVisible } = useScrollAnimation();
 
-  const services = [
+  const competencies = [
     {
       icon: Globe,
-      title: "Web Development",
-      description: "Custom web applications built with modern frameworks for optimal performance.",
-      features: ["Responsive Design", "SEO Optimized", "Fast Loading"],
+      title: "Enterprise Web Applications",
+      description: "Experience delivering scalable, maintainable web solutions for warehouse and logistics systems.",
+      highlights: ["Responsive Design", "Performance Focused", "Scalable Architecture"],
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Smartphone,
-      title: "Mobile Development",
-      description: "Cross-platform mobile apps that deliver native-like experiences.",
-      features: ["React Native", "Cross-Platform", "Offline Support"],
+      title: "Cross-Platform Solutions",
+      description: "Proven ability to deliver mobile-first and cross-platform experiences with native-like performance.",
+      highlights: ["React Native", "Progressive Web Apps", "Offline Capability"],
       color: "from-violet-500 to-purple-500",
     },
     {
       icon: Database,
-      title: "Backend Solutions",
-      description: "Scalable and secure backend systems with robust APIs and cloud infrastructure.",
-      features: ["API Development", "Database Design", "Cloud Hosting"],
+      title: "Backend & Data Systems",
+      description: "Strong foundation in designing robust APIs, database architecture, and cloud infrastructure.",
+      highlights: ["API Development", "Database Design", "Cloud Deployment"],
       color: "from-emerald-500 to-teal-500",
     },
     {
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive interfaces that prioritize user experience.",
-      features: ["User Research", "Prototyping", "Design Systems"],
+      icon: Layers,
+      title: "Full-Stack Delivery",
+      description: "End-to-end ownership from requirements gathering through deployment and maintenance.",
+      highlights: ["Complete Ownership", "Agile Delivery", "Code Quality"],
       color: "from-pink-500 to-rose-500",
     },
     {
       icon: Zap,
-      title: "Performance Optimization",
-      description: "Speed up your applications with code optimization and best practices.",
-      features: ["Code Audits", "Load Time", "Scalability"],
+      title: "Performance Optimisation",
+      description: "Track record of improving application speed, reducing load times, and enhancing user experience.",
+      highlights: ["Code Audits", "Load Optimisation", "Scalability"],
       color: "from-amber-500 to-orange-500",
     },
     {
-      icon: MessageSquare,
-      title: "Consulting",
-      description: "Technical guidance to help you make informed decisions.",
-      features: ["Tech Stack", "Architecture", "Training"],
+      icon: Users,
+      title: "Team Collaboration",
+      description: "Effective communicator who thrives in cross-functional teams and mentors junior developers.",
+      highlights: ["Agile/Scrum", "Code Reviews", "Knowledge Sharing"],
       color: "from-primary to-blue-500",
     },
   ];
 
   return (
-    <section id="services" className="py-16 md:py-24 relative">
+    <section id="competencies" className="py-16 md:py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -69,46 +69,46 @@ const Services = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              <span>What I Do</span>
+              <span>What I Bring</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
-              My <span className="gradient-text">Services</span>
+              Core <span className="gradient-text">Competencies</span>
             </h2>
             <div className="accent-line mx-auto mb-6" />
             <p className="text-lg text-muted-foreground">
-              How I can help bring your ideas to life
+              The expertise and value I bring to your team
             </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {services.map((service, index) => (
+            {competencies.map((competency, index) => (
               <motion.div
-                key={service.title}
+                key={competency.title}
                 className="group glass-card p-5 md:p-6"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
                 whileHover={{ y: -6 }}
               >
-                <div className={`p-3 rounded-xl bg-gradient-to-br ${service.color} shadow-lg w-fit mb-4`}>
-                  <service.icon className="w-6 h-6 text-white" />
+                <div className={`p-3 rounded-xl bg-gradient-to-br ${competency.color} shadow-lg w-fit mb-4`}>
+                  <competency.icon className="w-6 h-6 text-white" />
                 </div>
                 
                 <h3 className="text-lg md:text-xl font-display font-semibold text-foreground mb-2">
-                  {service.title}
+                  {competency.title}
                 </h3>
                 
                 <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {service.description}
+                  {competency.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
+                  {competency.highlights.map((highlight) => (
                     <span
-                      key={feature}
+                      key={highlight}
                       className="luxury-badge text-xs px-2.5 py-1 text-primary"
                     >
-                      {feature}
+                      {highlight}
                     </span>
                   ))}
                 </div>
@@ -121,4 +121,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default CoreCompetencies;
