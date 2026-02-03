@@ -123,7 +123,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
         <CardContent>
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.slice(0, 5).map((tech, techIndex) => (
+            {project.technologies.map((tech, techIndex) => (
               <span
                 key={techIndex}
                 className="luxury-badge px-2.5 py-1 text-xs font-medium text-primary"
@@ -131,11 +131,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 5 && (
-              <span className="px-2.5 py-1 text-xs text-muted-foreground">
-                +{project.technologies.length - 5} more
-              </span>
-            )}
           </div>
           {project.github && (
             <a
