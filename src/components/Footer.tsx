@@ -121,15 +121,9 @@ const Footer = () => {
           <Separator className="w-24 bg-border/50" />
 
           {/* Copyright */}
-          <div className="flex flex-col md:flex-row items-center gap-2 text-center">
-            <p className="text-muted-foreground text-sm">
-              © {currentYear} Amaan Nazir. All rights reserved.
-            </p>
-            <span className="hidden md:inline text-muted-foreground/50">•</span>
-            <p className="text-muted-foreground text-sm flex items-center gap-1">
-              Crafted with <Heart className="w-3 h-3 text-primary fill-primary" /> in the UK
-            </p>
-          </div>
+          <p className="text-muted-foreground text-sm text-center">
+            © {currentYear} Amaan Nazir. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
