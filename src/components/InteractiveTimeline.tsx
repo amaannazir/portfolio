@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from "react";
 const experiences = [
   {
     type: "work",
-    title: "Mid-Level Full-Stack Systems Developer",
+    title: "Full-Stack Systems Developer",
     company: "NEXT LTD",
     period: "Promotion within 18 months",
     date: "2024",
@@ -14,9 +14,9 @@ const experiences = [
   },
   {
     type: "work",
-    title: "Software Developer",
+    title: "Trainee Full Stack Software Engineer",
     company: "NEXT LTD",
-    period: "Jul 2022 - Present",
+    period: "Jul 2022 - 2024",
     date: "2022",
     description: "Developed and maintained critical full-stack warehouse logistics applications. Single-handedly owned 6-month legacy system modernisation project, re-engineering 93 reports. Key projects: IIP, Checkstation Application, Generic & Inbound Applications.",
     icon: Briefcase,
