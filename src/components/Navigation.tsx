@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Menu, X, Sparkles } from "lucide-react";
+import { User, Menu, X, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
@@ -81,7 +81,7 @@ const Navigation = () => {
                 <ThemeToggle />
                 <Button size="sm" className="hidden sm:flex btn-luxury text-primary-foreground gap-1.5" asChild>
                   <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Linkedin className="w-3.5 h-3.5" />
                     Connect
                   </a>
                 </Button>
