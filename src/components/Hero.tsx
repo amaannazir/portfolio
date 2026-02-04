@@ -130,6 +130,9 @@ const Hero = () => {
                   <span className="text-foreground font-medium">C#, .NET, Blazor</span>, and{" "}
                   <span className="text-foreground font-medium">ASP.NET Core</span>.
                 </p>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                  First-Class Honours in Software Engineering from Sheffield Hallam University.
+                </p>
               </motion.div>
 
               {/* CTA Buttons */}
