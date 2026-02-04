@@ -124,11 +124,11 @@ const Hero = () => {
                 </h2>
 
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  First-Class Software Engineering graduate and Full-Stack Developer at NEXT.
-                  Specialising in modernising warehouse logistics systems using{" "}
+                  Full-Stack Engineer specialised in Enterprise Modernisation. 
+                  Promoted to Mid-Level in 18 months at NEXT. 
+                  Building warehouse logistics systems using{" "}
                   <span className="text-foreground font-medium">C#, .NET, Blazor</span>, and{" "}
-                  <span className="text-foreground font-medium">ASP.NET Core</span>. 
-                  Promoted to Mid-Level in just 18 months.
+                  <span className="text-foreground font-medium">ASP.NET Core</span>.
                 </p>
               </motion.div>
 

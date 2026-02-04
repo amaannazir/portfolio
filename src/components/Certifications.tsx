@@ -1,4 +1,4 @@
-import { GraduationCap, Award, Cloud, Code, BadgeCheck } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const certifications = [
@@ -7,28 +7,6 @@ const certifications = [
     issuer: "Sheffield Hallam University",
     badge: "First-Class Honours",
     icon: GraduationCap,
-    earned: true,
-  },
-  {
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    badge: "Coming Soon",
-    icon: Cloud,
-    earned: false,
-  },
-  {
-    title: "Google Cloud Fundamentals",
-    issuer: "Google Cloud",
-    badge: "Coming Soon",
-    icon: Code,
-    earned: false,
-  },
-  {
-    title: "HubSpot Marketing",
-    issuer: "HubSpot Academy",
-    badge: "Coming Soon",
-    icon: BadgeCheck,
-    earned: false,
   },
 ];
 
@@ -53,33 +31,23 @@ const Certifications = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="flex justify-center">
             {certifications.map((cert, index) => {
               const Icon = cert.icon;
               return (
                 <div
                   key={index}
-                  className={`glass-card p-6 rounded-xl text-center transition-all duration-300 hover:scale-105 group ${
-                    !cert.earned ? 'opacity-60' : ''
-                  }`}
+                  className="glass-card p-8 rounded-xl text-center transition-all duration-300 hover:scale-105 group max-w-sm"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    cert.earned 
-                      ? 'bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30' 
-                      : 'bg-secondary'
-                  }`}>
-                    <Icon className={`w-8 h-8 ${cert.earned ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30">
+                    <Icon className="w-10 h-10 text-primary-foreground" />
                   </div>
-                  <h3 className="font-medium text-foreground mb-1 text-sm md:text-base group-hover:text-primary transition-colors">
+                  <h3 className="font-medium text-foreground mb-1 text-base md:text-lg group-hover:text-primary transition-colors">
                     {cert.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground mb-2">{cert.issuer}</p>
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                    cert.earned 
-                      ? 'bg-primary/20 text-primary' 
-                      : 'bg-secondary text-muted-foreground'
-                  }`}>
+                  <p className="text-sm text-muted-foreground mb-3">{cert.issuer}</p>
+                  <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/20 text-primary">
                     {cert.badge}
                   </span>
                 </div>
