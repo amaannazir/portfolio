@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ExternalLink, Play, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
 import wmsImage from "@/assets/project-wms-dashboard.jpg";
 import optiRouteImage from "@/assets/project-optiroute.jpg";
 import scanTrackImage from "@/assets/project-scantrack.jpg";
@@ -149,8 +151,40 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   );
 };
 
+const ProjectCardSkeleton = ({ index }: { index: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4, delay: index * 0.08 }}
+  >
+    <Card className="glass-card overflow-hidden h-full">
+      <Skeleton className="aspect-video w-full" />
+      <CardHeader className="space-y-3">
+        <Skeleton className="h-6 w-3/4" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-2/3" />
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Skeleton key={i} className="h-6 w-16 rounded-full" />
+          ))}
+        </div>
+        <Skeleton className="h-4 w-24" />
+      </CardContent>
+    </Card>
+  </motion.div>
+);
+
 const Projects = () => {
   const headerAnimation = useScrollAnimation(0.1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="projects" className="py-24 md:py-32 relative">
@@ -179,9 +213,13 @@ const Projects = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projectsData.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
-            ))}
+            {isLoading
+              ? Array.from({ length: 6 }).map((_, index) => (
+                  <ProjectCardSkeleton key={index} index={index} />
+                ))
+              : projectsData.map((project, index) => (
+                  <ProjectCard key={index} project={project} index={index} />
+                ))}
           </div>
         </div>
       </div>
