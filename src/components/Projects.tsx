@@ -88,7 +88,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <div className="aspect-video overflow-hidden bg-muted relative">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`Screenshot of ${project.title} - ${project.technologies.slice(0, 3).join(', ')} project by Amaan Nazir`}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           {/* Gradient overlay */}
