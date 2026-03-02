@@ -8,7 +8,7 @@ const experiences = [
     title: "Full-Stack Systems Software Engineer",
     company: "NEXT LTD",
     period: "Promotion within 18 months",
-    date: "2024",
+    date: "2026",
     description: "Promoted to Mid-Level within 18 months. Leading modernisation of 93+ reports and developing critical warehouse logistics systems using C#, .NET, Blazor, and EF Core.",
     icon: Briefcase,
   },
