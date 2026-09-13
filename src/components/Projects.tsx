@@ -46,13 +46,6 @@ const projectsData = [
     image: gwosImage,
   },
   {
-    title: "Legacy System Modernisation",
-    description:
-      "Single-handedly owned a 6-month project to modernise a critical legacy reporting application used by all warehouse operation teams at NEXT. Re-engineered 93+ reports and migrated merchandise intake systems into an integrated C# .NET solution with MudBlazor frontend, ensuring brand consistency across all NEXT applications.",
-    technologies: ["C#", ".NET Core", "MudBlazor", "ASP.NET Core", "SQL"],
-    image: wmsImage,
-  },
-  {
     title: "IIP - International Intake Processing",
     description:
       "Developed and integrated a new C# .NET application for processing international intake within existing UAE/Dubai warehouses, enhancing NEXT's global logistics capabilities and streamlining cross-border merchandise operations.",
