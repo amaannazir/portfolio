@@ -34,7 +34,7 @@ const projectsData = [
     title: "Halal Meat Delivery Platform",
     description:
       "Final year dissertation project: a full-featured e-commerce platform enabling students to order halal meat to their door. Includes Stripe payments, shopping cart, user accounts, and delivery forms with a complete checkout experience.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Authentication"],
+    technologies: ["Blazor WebAssembly", "C#", ".NET", "SQL Server", "Stripe", "Database Migrations"],
     image: halalDeliveryImage,
     github: "https://github.com/amaannazir/halalonthego",
   },

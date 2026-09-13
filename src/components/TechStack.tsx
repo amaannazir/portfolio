@@ -24,10 +24,10 @@ const stackCategories = [
     title: "Languages & Frameworks",
     icon: Terminal,
     items: [
-      { name: "C# / .NET 8", description: "Backend & enterprise applications" },
+      { name: "C# 14 / .NET 10", description: "Backend & enterprise applications" },
       { name: "Blazor WebAssembly", description: "Modern web UI framework" },
       { name: "ASP.NET Core", description: "Web APIs & MVC applications" },
-      { name: "TypeScript / React", description: "Frontend development" },
+      { name: "TypeScript / Angular", description: "Frontend development" },
     ],
   },
   {
@@ -36,16 +36,16 @@ const stackCategories = [
     items: [
       { name: "SQL Server", description: "Primary database" },
       { name: "Entity Framework Core", description: "ORM for .NET" },
-      { name: "PostgreSQL", description: "Secondary database" },
+      { name: "Azure Cosmos DB", description: "NoSQL cloud database" },
     ],
   },
   {
     title: "DevOps & Tools",
     icon: GitBranch,
     items: [
-      { name: "Git / Azure DevOps", description: "Version control & CI/CD" },
-      { name: "Docker", description: "Containerization" },
-      { name: "Postman", description: "API testing" },
+      { name: "Git / Azure DevOps", description: "Version control & YAML CI/CD" },
+      { name: "Azure Kubernetes Service", description: "Container orchestration (AKS)" },
+      { name: "Azure Service Bus & Functions", description: "Event-driven integrations" },
     ],
   },
   {
