@@ -14,6 +14,14 @@ import { motion } from "framer-motion";
 
 const projectsData = [
   {
+    title: "Legacy System Modernisation",
+    description:
+      "Single-handedly owned a 6-month project to modernise a critical legacy reporting application used by all warehouse operation teams at NEXT. Re-engineered 93+ reports and migrated merchandise intake systems into an integrated C# .NET solution with MudBlazor frontend, ensuring brand consistency across all NEXT applications.",
+    technologies: ["C#", ".NET Core", "MudBlazor", "ASP.NET Core", "SQL"],
+    image: wmsImage,
+    featured: true,
+  },
+  {
     title: "Snake: Spectrum",
     description:
       "A completely reimagined Snake game built for mobile and web with ultra-smooth 60 FPS gameplay, a custom 'Tube' rendering engine for organic fluid movement, and a massive 120-level campaign across 12 world themes. Features power-ups (Magnet, Shield, Poison), deep cosmetic customization (skins, scales, trails), precision swipe/keyboard controls with Dash mechanics, and an infinite Endless Mode.",
@@ -21,7 +29,6 @@ const projectsData = [
     image: snakeSpectrumImage,
     github: "https://github.com/amaannazir/SnakeSpectrum",
     liveDemo: "https://amaannazir.github.io/SnakeSpectrum/",
-    featured: true,
   },
   {
     title: "Halal Meat Delivery Platform",

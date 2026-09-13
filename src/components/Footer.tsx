@@ -12,7 +12,7 @@ const Footer = () => {
     },
     {
       name: "GitHub",
-      href: "https://github.com/amaan-nazir",
+      href: "https://github.com/amaannazir",
       icon: Github,
     },
     {
