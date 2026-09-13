@@ -1,6 +1,7 @@
 import { Linkedin, Mail, Download, ArrowRight, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import profileImage from "@/assets/profile-headshot.png";
+import cvAsset from "@/assets/Amaan_Nazir_CV.pdf.asset.json";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -141,7 +142,7 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <Button size="lg" className="btn-luxury text-primary-foreground font-medium gap-2 w-full sm:w-auto" asChild>
-                  <a href="/Amaan_Nazir_CV.pdf" download="Amaan_Nazir_CV.pdf">
+                  <a href={cvAsset.url} download="Amaan_Nazir_CV.pdf">
                     <Download className="w-4 h-4" />
                     Download CV
                   </a>
