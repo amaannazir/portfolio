@@ -128,8 +128,9 @@ const Hero = () => {
                   Full-Stack Engineer specialised in Enterprise Modernisation. 
                   Promoted to Mid-Level in 18 months at NEXT. 
                   Building warehouse logistics systems using{" "}
-                  <span className="text-foreground font-medium">C#, .NET, Blazor</span>, and{" "}
-                  <span className="text-foreground font-medium">ASP.NET Core</span>.
+                  <span className="text-foreground font-medium">C#, .NET, Blazor</span>, with{" "}
+                  <span className="text-foreground font-medium">event-driven Azure integrations</span>{" "}
+                  (Service Bus, Functions, Cosmos DB).
                 </p>
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                   First-Class Honours in Software Engineering from Sheffield Hallam University.

@@ -9,7 +9,7 @@ const skillTiers = [
     color: "from-amber-500 to-yellow-500",
     bgColor: "bg-amber-500/10",
     borderColor: "border-amber-500/30",
-    skills: ["C#", ".NET 8", "ASP.NET Core", "Blazor", "SQL Server", "Entity Framework", "CSS"],
+    skills: ["C#", ".NET 10", "ASP.NET Core", "Blazor WebAssembly", "MudBlazor", "SQL Server", "Entity Framework Core"],
   },
   {
     tier: "Proficient",
@@ -17,7 +17,7 @@ const skillTiers = [
     color: "from-primary to-blue-500",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/30",
-    skills: ["React", "TypeScript", "Azure DevOps", "Git", "REST APIs", "MudBlazor"],
+    skills: ["Azure Service Bus", "Azure Functions", "Azure Cosmos DB", "TypeScript", "JavaScript", "Angular", "YAML CI/CD", "Azure Kubernetes Service"],
   },
   {
     tier: "Familiar",
@@ -25,7 +25,7 @@ const skillTiers = [
     color: "from-emerald-500 to-teal-500",
     bgColor: "bg-emerald-500/10",
     borderColor: "border-emerald-500/30",
-    skills: ["Docker", "PostgreSQL", "React Native", "Node.js", "MongoDB", "AWS"],
+    skills: ["C++", "React", "Docker & Containers", "Automated QA", "Agile/Scrum"],
   },
 ];
 
