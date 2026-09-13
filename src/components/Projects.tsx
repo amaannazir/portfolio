@@ -33,7 +33,7 @@ const projectsData = [
   {
     title: "Halal Meat Delivery Platform",
     description:
-      "Final year personal dissertation project addressing a real-world issue: enabling students to order and purchase halal meats directly to their home or accommodation. Full-featured e-commerce platform with Stripe payment integration, shopping cart system, user accounts, delivery forms, and student email validation—just like ordering anything online with a complete checkout experience.",
+      "Final year dissertation project: a full-featured e-commerce platform enabling students to order halal meat to their door. Includes Stripe payments, shopping cart, user accounts, and delivery forms with a complete checkout experience.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Authentication"],
     image: halalDeliveryImage,
     github: "https://github.com/amaannazir/halalonthego",
@@ -41,7 +41,7 @@ const projectsData = [
   {
     title: "GWOS - Global Warehouse Operating System",
     description:
-      "Enterprise-level Warehouse Management System orchestrating complex logistics operations across UAE (Dubai), UK, Germany, Russia, and Poland. Implemented end-to-end staff performance tracking for bonus calculations, integrated RF handheld scanners and label printers with the central database, built QC workflow UI with full internationalization, and refactored legacy test infrastructure to improve CI/CD pipeline stability.",
+      "Enterprise-level Warehouse Management System orchestrating logistics across UAE, UK, Germany, Russia, and Poland. Built staff performance tracking for bonus calculations, RF scanner and label printer integration, and a QC workflow UI with full internationalisation.",
     technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "LINQ", "MSTest/Moq", "jQuery"],
     image: gwosImage,
   },
