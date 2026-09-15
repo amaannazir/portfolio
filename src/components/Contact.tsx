@@ -1,70 +1,55 @@
 import { useState } from "react";
+import { ArrowUpRight, Linkedin, Mail, Send } from "lucide-react";
+import { z } from "zod";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import { toast } from "sonner";
-import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { motion } from "framer-motion";
-import { Send, Mail, User, MessageSquare } from "lucide-react";
+import { Textarea } from "./ui/textarea";
 
 const contactSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "Name is required" })
-    .max(100, { message: "Name must be less than 100 characters" }),
-  email: z
-    .string()
-    .trim()
-    .email({ message: "Invalid email address" })
-    .max(255, { message: "Email must be less than 255 characters" }),
-  message: z
-    .string()
-    .trim()
-    .min(1, { message: "Message is required" })
-    .max(1000, { message: "Message must be less than 1000 characters" }),
+  name: z.string().trim().min(1, "Please enter your name").max(100, "Name must be under 100 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be under 255 characters"),
+  message: z.string().trim().min(1, "Please enter a message").max(1000, "Message must be under 1,000 characters"),
 });
 
+type FormData = z.infer<typeof contactSchema>;
+type FormErrors = Partial<Record<keyof FormData, string>>;
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<FormErrors>({});
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const headerAnimation = useScrollAnimation(0.1);
-  const formAnimation = useScrollAnimation<HTMLFormElement>(0.1);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const updateField = (field: keyof FormData, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setErrors((current) => ({ ...current, [field]: undefined }));
+  };
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     const result = contactSchema.safeParse(formData);
-
     if (!result.success) {
-      const firstError = result.error.errors[0];
-      toast.error(firstError.message);
+      const nextErrors: FormErrors = {};
+      result.error.errors.forEach((error) => { const field = error.path[0] as keyof FormData; if (!nextErrors[field]) nextErrors[field] = error.message; });
+      setErrors(nextErrors);
+      toast.error(result.error.errors[0]?.message ?? "Please check your details");
       return;
     }
 
     setIsSubmitting(true);
-
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: { ...formData, honeypot },
-      });
-
+      const { error } = await supabase.functions.invoke("send-contact-email", { body: { ...result.data, honeypot } });
       if (error) {
         console.error("Error sending email:", error);
         toast.error("Failed to send message. Please try again or email me directly.");
         return;
       }
-
       toast.success("Thank you for your message! I'll get back to you soon.");
       setFormData({ name: "", email: "", message: "" });
+      setErrors({});
     } catch (error) {
       console.error("Error:", error);
       toast.error("Failed to send message. Please try again or email me directly.");
@@ -73,135 +58,29 @@ const Contact = () => {
     }
   };
 
+  const inputClass = "min-h-12 rounded-md border-feature-foreground/25 bg-feature-foreground/5 text-feature-foreground placeholder:text-feature-foreground/45 focus-visible:ring-secondary";
   return (
-    <section id="contact" className="py-24 md:py-32 relative">
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-t from-muted/50 to-transparent pointer-events-none" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-2xl mx-auto">
-          <motion.div 
-            ref={headerAnimation.ref}
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={headerAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              <span>Get in Touch</span>
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight">
-              Let's <span className="gradient-text">Connect</span>
-            </h2>
-            <div className="accent-line mx-auto mb-6" />
-            <p className="text-lg text-muted-foreground">
-              Interested in working together? Drop me a message.
-            </p>
-          </motion.div>
-
-          <motion.form 
-            ref={formAnimation.ref}
-            onSubmit={handleSubmit} 
-            className="glass-card p-6 md:p-8 rounded-2xl space-y-5"
-            initial={{ opacity: 0, y: 40 }}
-            animate={formAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          >
-            <motion.div 
-              className="space-y-2"
-              initial={{ opacity: 0, x: -10 }}
-              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-            >
-              <Label htmlFor="name" className="font-medium flex items-center gap-2">
-                <User className="w-4 h-4 text-muted-foreground" />
-                Your Name
-              </Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="John Doe"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-background/50 border-border focus:border-primary transition-all"
-              />
-            </motion.div>
-
-            <motion.div 
-              className="space-y-2"
-              initial={{ opacity: 0, x: -10 }}
-              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            >
-              <Label htmlFor="email" className="font-medium flex items-center gap-2">
-                <Mail className="w-4 h-4 text-muted-foreground" />
-                Your Email
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="john@example.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-background/50 border-border focus:border-primary transition-all"
-              />
-            </motion.div>
-
-            <motion.div 
-              className="space-y-2"
-              initial={{ opacity: 0, x: -10 }}
-              animate={formAnimation.isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <Label htmlFor="message" className="font-medium flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-muted-foreground" />
-                Message
-              </Label>
-              <Textarea
-                id="message"
-                placeholder="Tell me about your project or opportunity..."
-                rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-background/50 border-border focus:border-primary transition-all resize-none"
-              />
-            </motion.div>
-
-            {/* Honeypot field */}
-            <div className="absolute -left-[9999px]" aria-hidden="true">
-              <Input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                value={honeypot}
-                onChange={(e) => setHoneypot(e.target.value)}
-              />
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={formAnimation.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-            >
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full btn-luxury text-primary-foreground font-medium gap-2" 
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </motion.div>
-          </motion.form>
+    <section id="contact" className="feature-surface scroll-mt-16 py-20 sm:py-28">
+      <div className="section-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+        <div>
+          <p className="mb-3 text-xs font-semibold uppercase text-secondary" style={{ letterSpacing: ".14em" }}>Get in touch</p>
+          <h2 className="font-display text-4xl font-medium sm:text-5xl">Let’s build dependable systems.</h2>
+          <p className="mt-5 max-w-md leading-relaxed text-feature-foreground/70">I’m open to full-time software engineering opportunities where operational understanding and thoughtful delivery matter.</p>
+          <div className="mt-8 space-y-2">
+            <a href="mailto:amaan-619@hotmail.co.uk" className="flex min-h-12 items-center gap-3 border-b border-feature-foreground/20 text-sm"><Mail className="h-4 w-4 text-secondary" /> amaan-619@hotmail.co.uk</a>
+            <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer" className="flex min-h-12 items-center gap-3 border-b border-feature-foreground/20 text-sm"><Linkedin className="h-4 w-4 text-secondary" /> LinkedIn <ArrowUpRight className="ml-auto h-4 w-4" /></a>
+          </div>
         </div>
+
+        <form onSubmit={handleSubmit} noValidate className="rounded-lg border border-feature-foreground/20 p-5 sm:p-8">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div><Label htmlFor="name" className="text-feature-foreground">Name</Label><Input id="name" name="name" autoComplete="name" value={formData.name} onChange={(e) => updateField("name", e.target.value)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} className={`mt-2 ${inputClass}`} />{errors.name && <p id="name-error" className="mt-2 text-sm text-secondary">{errors.name}</p>}</div>
+            <div><Label htmlFor="email" className="text-feature-foreground">Email</Label><Input id="email" name="email" type="email" autoComplete="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} className={`mt-2 ${inputClass}`} />{errors.email && <p id="email-error" className="mt-2 text-sm text-secondary">{errors.email}</p>}</div>
+          </div>
+          <div className="mt-5"><Label htmlFor="message" className="text-feature-foreground">Message</Label><Textarea id="message" name="message" rows={6} placeholder="Tell me about the role or opportunity…" value={formData.message} onChange={(e) => updateField("message", e.target.value)} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} className={`mt-2 resize-y ${inputClass}`} />{errors.message && <p id="message-error" className="mt-2 text-sm text-secondary">{errors.message}</p>}</div>
+          <div className="absolute -left-[9999px]" aria-hidden="true"><Label htmlFor="website">Website</Label><Input id="website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} /></div>
+          <Button type="submit" size="lg" disabled={isSubmitting} className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90"><Send /> {isSubmitting ? "Sending…" : "Send message"}</Button>
+        </form>
       </div>
     </section>
   );
