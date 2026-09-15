@@ -5,4 +5,4 @@
 - [x] Preserve and restyle working contact form
 - [x] Consolidate work, stack, about, and career content
 - [x] Fix metadata and remove obsolete visual effects
-- [ ] Validate interactions, themes, and responsive layouts
+- [x] Validate interactions, themes, and responsive layouts
