@@ -151,6 +151,14 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
+    if ((emailResponse as any)?.error) {
+      console.error("Email provider rejected the message:", (emailResponse as any).error);
+      return new Response(
+        JSON.stringify({ error: 'Failed to send message. Please try again later.' }),
+        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     console.log("Email sent successfully:", emailResponse);
 
     return new Response(JSON.stringify({ success: true }), {
