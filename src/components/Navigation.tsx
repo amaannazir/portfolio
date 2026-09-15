@@ -1,169 +1,60 @@
-import { useState, useEffect } from "react";
-import { User, Menu, X, Linkedin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
-import { motion, AnimatePresence } from "framer-motion";
+
+const navItems = [
+  { label: "Work", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Stack", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+];
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const close = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  const navItems = [
-    { label: "About", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Projects", id: "projects" },
-    { label: "Skills", id: "skills" },
-    { label: "Experience", id: "experience" },
-    { label: "Contact", id: "contact" },
-  ];
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   return (
-    <>
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-sm" 
-            : "bg-transparent"
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
-          <div className="flex items-center justify-between">
-            <motion.button
-              onClick={() => scrollToSection("about")}
-              className="flex items-center gap-2 md:gap-3 text-lg font-display font-semibold text-foreground hover:text-primary transition-colors group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-violet flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary/25 transition-all">
-                <User className="w-4 h-4 md:w-5 md:h-5 text-white" />
-              </div>
-              <span className="hidden xs:inline">AMAAN NAZIR</span>
-              <span className="xs:hidden">AN</span>
-            </motion.button>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+      <nav className="section-shell flex h-16 items-center justify-between" aria-label="Main navigation">
+        <a href="#top" className="flex min-h-11 items-center gap-3" aria-label="Amaan Nazir, home">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-foreground font-display text-sm font-bold text-background">AN/</span>
+          <span className="hidden leading-tight xs:block">
+            <span className="block font-display text-sm font-semibold">Amaan Nazir</span>
+            <span className="block text-xs text-muted-foreground">Systems Software Engineer</span>
+          </span>
+        </a>
 
-            <div className="flex items-center gap-4 md:gap-6">
-              <div className="hidden md:flex items-center gap-6">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="relative link-elegant text-foreground/80 hover:text-foreground transition-colors font-medium text-sm"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    whileHover={{ y: -1 }}
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
-              </div>
+        <div className="hidden items-center gap-1 lg:flex">
+          {navItems.map((item) => <a key={item.href} href={item.href} className="flex min-h-11 items-center px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">{item.label}</a>)}
+        </div>
 
-              <div className="flex items-center gap-2">
-                <ThemeToggle />
-                <Button size="sm" className="hidden sm:flex btn-luxury text-primary-foreground gap-1.5" asChild>
-                  <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="w-3.5 h-3.5" />
-                    Connect
-                  </a>
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="md:hidden"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                  <AnimatePresence mode="wait">
-                    {isMobileMenuOpen ? (
-                      <motion.div
-                        key="close"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <X className="w-5 h-5" />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="menu"
-                        initial={{ rotate: 90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: -90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Menu className="w-5 h-5" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </Button>
-              </div>
-            </div>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button asChild className="hidden sm:inline-flex"><a href="#contact">Contact</a></Button>
+          <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((value) => !value)}>
+            {open ? <X /> : <Menu />}
+          </Button>
+        </div>
+      </nav>
+      {open && (
+        <div id="mobile-menu" className="border-t border-border bg-background lg:hidden">
+          <div className="section-shell flex flex-col py-4">
+            {[...navItems, { label: "Contact", href: "#contact" }].map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center border-b border-border text-lg font-medium last:border-0">{item.label}</a>)}
           </div>
         </div>
-      </motion.nav>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-xl md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col items-center justify-center h-full gap-8 pt-16">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-3xl font-display font-semibold text-foreground hover:text-primary transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.label}
-                </motion.button>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
-              >
-                <Button size="lg" className="mt-4 btn-luxury text-primary-foreground" asChild>
-                  <a href="https://www.linkedin.com/in/amaan-nazir-033463225" target="_blank" rel="noopener noreferrer">
-                    Connect on LinkedIn
-                  </a>
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      )}
+    </header>
   );
 };
 
