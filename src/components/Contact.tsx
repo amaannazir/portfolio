@@ -60,11 +60,11 @@ const Contact = () => {
 
   const inputClass = "min-h-12 rounded-md border-feature-foreground/25 bg-feature-foreground/5 text-feature-foreground placeholder:text-feature-foreground/45 focus-visible:ring-secondary";
   return (
-    <section id="contact" className="feature-surface scroll-mt-16 py-20 sm:py-28">
-      <div className="section-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+    <section id="contact" className="feature-surface scroll-mt-16 py-16 sm:py-24">
+      <div className="section-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase text-secondary" style={{ letterSpacing: ".14em" }}>Get in touch</p>
-          <h2 className="font-display text-4xl font-medium sm:text-5xl">Let’s build dependable systems.</h2>
+          <p className="mb-3 text-xs font-semibold uppercase text-secondary">Get in touch</p>
+          <h2 className="font-display text-3xl font-medium sm:text-5xl">Let’s build dependable systems.</h2>
           <p className="mt-5 max-w-md leading-relaxed text-feature-foreground/70">I’m open to full-time software engineering opportunities where operational understanding and thoughtful delivery matter.</p>
           <div className="mt-8 space-y-2">
             <a href="mailto:amaan-619@hotmail.co.uk" className="flex min-h-12 items-center gap-3 border-b border-feature-foreground/20 text-sm"><Mail className="h-4 w-4 text-secondary" /> amaan-619@hotmail.co.uk</a>

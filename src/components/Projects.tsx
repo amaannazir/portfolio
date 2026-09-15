@@ -109,22 +109,22 @@ const DetailDialog = ({ project, inverse = false }: { project: Project; inverse?
 const Projects = () => {
   const [gwos, platform, snake, halal, ...secondary] = projects;
   return (
-    <section id="projects" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="projects" className="scroll-mt-20 py-16 sm:py-24">
       <div className="section-shell">
-        <div className="mb-10 grid gap-5 border-b border-border pb-8 lg:grid-cols-2 lg:items-end">
-          <div><p className="eyebrow mb-3">Selected work</p><h2 className="font-display text-4xl font-medium sm:text-5xl">Systems built for the real world.</h2></div>
+        <div className="mb-8 grid gap-4 border-b border-border pb-7 sm:mb-10 lg:grid-cols-2 lg:items-end">
+          <div><p className="eyebrow mb-3">Selected work</p><h2 className="font-display text-3xl font-medium sm:text-5xl">Systems built for the real world.</h2></div>
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground lg:justify-self-end">Enterprise warehouse engineering and considered personal products, with the role and contribution made clear.</p>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2">
           {[gwos, platform].map((project, index) => {
             const Icon = project.icon;
-            return <article key={project.title} className="feature-surface relative overflow-hidden rounded-lg p-7 sm:p-9">
+            return <article key={project.title} className="feature-surface relative overflow-hidden rounded-lg p-6 sm:p-9">
               <div className="subtle-grid absolute inset-0 opacity-40" aria-hidden="true" />
-              <div className="relative flex min-h-[390px] flex-col">
-                <div className="mb-16 flex items-start justify-between"><p className="text-xs font-semibold uppercase text-secondary" style={{ letterSpacing: ".14em" }}>{project.label}</p><Icon className="h-7 w-7 text-secondary" /></div>
+              <div className="relative flex min-h-[330px] flex-col sm:min-h-[390px]">
+                <div className="mb-10 flex items-start justify-between gap-4 sm:mb-16"><p className="text-xs font-semibold uppercase text-secondary">{project.label}</p><Icon className="h-7 w-7 shrink-0 text-secondary" /></div>
                 <p className="mb-3 font-display text-sm text-secondary">0{index + 1}</p>
-                <h3 className="max-w-lg font-display text-3xl font-medium leading-tight sm:text-4xl">{project.title}</h3>
+                <h3 className="max-w-lg font-display text-2xl font-medium leading-tight sm:text-4xl">{project.title}</h3>
                 <p className="mt-5 max-w-xl leading-relaxed text-feature-foreground/75">{project.summary}</p>
                 <div className="mt-auto pt-8"><DetailDialog project={project} inverse /></div>
               </div>
@@ -132,7 +132,7 @@ const Projects = () => {
           })}
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <div className="mt-8 grid gap-5 sm:mt-12 lg:grid-cols-2">
           {[snake, halal].map((project) => <article key={project.title} className="overflow-hidden rounded-lg border border-border bg-card">
             <img src={project.image} alt={`${project.title} project by Amaan Nazir`} width="1280" height="720" loading="lazy" className="aspect-video w-full object-cover" />
             <div className="p-6 sm:p-7"><p className="eyebrow mb-3">{project.label}</p><h3 className="font-display text-2xl font-semibold">{project.title}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{project.summary}</p>
@@ -145,9 +145,9 @@ const Projects = () => {
           </article>)}
         </div>
 
-        <div className="mt-12 border-t border-border">
+        <div className="mt-8 border-t border-border sm:mt-12">
           {secondary.map((project) => <article key={project.title} className="grid gap-4 border-b border-border py-7 sm:grid-cols-[1fr_1.4fr_auto] sm:items-center">
-            <div><p className="mb-1 text-xs uppercase text-primary" style={{ letterSpacing: ".12em" }}>{project.label}</p><h3 className="font-display text-xl font-semibold">{project.title}</h3></div>
+            <div><p className="mb-1 text-xs uppercase text-primary">{project.label}</p><h3 className="font-display text-xl font-semibold">{project.title}</h3></div>
             <p className="text-sm leading-relaxed text-muted-foreground">{project.summary}</p><DetailDialog project={project} />
           </article>)}
         </div>

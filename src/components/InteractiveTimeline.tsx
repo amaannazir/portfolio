@@ -6,9 +6,9 @@ const timeline = [
 ];
 
 const InteractiveTimeline = () => (
-  <section id="experience" className="scroll-mt-20 border-y border-border bg-card py-20 sm:py-28">
+  <section id="experience" className="scroll-mt-20 border-y border-border bg-card py-16 sm:py-24">
     <div className="section-shell">
-      <div className="mb-10"><p className="eyebrow mb-3">Experience</p><h2 className="font-display text-4xl font-medium sm:text-5xl">Progress built through delivery.</h2></div>
+      <div className="mb-8 sm:mb-10"><p className="eyebrow mb-3">Experience</p><h2 className="font-display text-3xl font-medium sm:text-5xl">Progress built through delivery.</h2></div>
       <ol className="border-t border-border">
         {timeline.map((item) => <li key={`${item.date}-${item.title}`} className="grid gap-3 border-b border-border py-7 sm:grid-cols-[150px_1fr] sm:gap-8">
           <time className="font-display text-sm font-semibold text-primary">{item.date}</time>
