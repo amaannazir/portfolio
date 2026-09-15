@@ -26,10 +26,10 @@ const Navigation = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <nav className="section-shell flex h-16 items-center justify-between" aria-label="Main navigation">
-        <a href="#top" className="flex min-h-11 items-center gap-3" aria-label="Amaan Nazir, home">
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-foreground font-display text-sm font-bold text-background">AN/</span>
-          <span className="hidden leading-tight xs:block">
+      <nav className="section-shell flex h-16 items-center justify-between gap-3" aria-label="Main navigation">
+        <a href="#top" className="flex min-h-11 min-w-0 items-center gap-3" aria-label="Amaan Nazir, home">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-foreground font-display text-sm font-bold text-background">AN/</span>
+          <span className="hidden min-w-0 leading-tight xs:block">
             <span className="block font-display text-sm font-semibold">Amaan Nazir</span>
             <span className="block text-xs text-muted-foreground">Systems Software Engineer</span>
           </span>
@@ -39,7 +39,7 @@ const Navigation = () => {
           {navItems.map((item) => <a key={item.href} href={item.href} className="flex min-h-11 items-center px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">{item.label}</a>)}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <ThemeToggle />
           <Button asChild className="hidden sm:inline-flex"><a href="#contact">Contact</a></Button>
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((value) => !value)}>
