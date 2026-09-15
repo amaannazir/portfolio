@@ -1,123 +1,26 @@
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { 
-  Monitor, 
-  Code2, 
-  Wrench, 
-  Palette, 
-  Database, 
-  GitBranch,
-  Terminal,
-  Zap
-} from "lucide-react";
+import { Braces, CloudCog, Database, TestTube2 } from "lucide-react";
 
-const stackCategories = [
-  {
-    title: "IDE & Editor",
-    icon: Code2,
-    items: [
-      { name: "Visual Studio 2022", description: "Primary IDE for .NET development" },
-      { name: "VS Code", description: "Lightweight editor for web & scripts" },
-      { name: "SQL Server Management Studio", description: "Database management" },
-    ],
-  },
-  {
-    title: "Languages & Frameworks",
-    icon: Terminal,
-    items: [
-      { name: "C# 14 / .NET 10", description: "Backend & enterprise applications" },
-      { name: "Blazor WebAssembly", description: "Modern web UI framework" },
-      { name: "ASP.NET Core", description: "Web APIs & MVC applications" },
-      { name: "TypeScript / Angular", description: "Frontend development" },
-    ],
-  },
-  {
-    title: "Database & ORM",
-    icon: Database,
-    items: [
-      { name: "SQL Server", description: "Primary database" },
-      { name: "Entity Framework Core", description: "ORM for .NET" },
-      { name: "Azure Cosmos DB", description: "NoSQL cloud database" },
-    ],
-  },
-  {
-    title: "DevOps & Tools",
-    icon: GitBranch,
-    items: [
-      { name: "Git / Azure DevOps", description: "Version control & YAML CI/CD" },
-      { name: "Azure Kubernetes Service", description: "Container orchestration (AKS)" },
-      { name: "Azure Service Bus & Functions", description: "Event-driven integrations" },
-    ],
-  },
-  {
-    title: "Productivity",
-    icon: Zap,
-    items: [
-      { name: "Notion", description: "Notes & documentation" },
-      { name: "Slack / Teams", description: "Communication" },
-      { name: "Jira", description: "Project management" },
-    ],
-  },
-  {
-    title: "Design",
-    icon: Palette,
-    items: [
-      { name: "Figma", description: "UI/UX design & prototyping" },
-      { name: "Canva", description: "Quick graphics & presentations" },
-    ],
-  },
+const groups = [
+  { number: "01", title: "Backend & data", icon: Database, description: "Reliable services and data models for operational systems.", items: ["C# 14", ".NET 10", "ASP.NET Core", "Entity Framework Core", "SQL Server", "Cosmos DB"] },
+  { number: "02", title: "Interfaces", icon: Braces, description: "Practical interfaces for people working in time-critical environments.", items: ["Blazor WebAssembly", "MudBlazor", "Angular", "TypeScript", "JavaScript", "HTML & CSS"] },
+  { number: "03", title: "Azure & integration", icon: CloudCog, description: "Event-led integrations linking software, scanners and automation.", items: ["Azure Service Bus", "Azure Functions", "Worker Services", "Barcode scanners", "RF devices", "Label printers"] },
+  { number: "04", title: "Delivery & quality", icon: TestTube2, description: "From design decisions to tested, deployable production software.", items: ["Automated QA", "MSTest & Moq", "AKS", "Docker", "YAML CI/CD", "Azure DevOps"] },
 ];
 
-const TechStack = () => {
-  const headerAnimation = useScrollAnimation(0.1);
-
-  return (
-    <section id="stack" className="py-32 relative">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div 
-            ref={headerAnimation.ref}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerAnimation.isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
-          >
-            <h2 className="text-5xl md:text-6xl font-light mb-4 tracking-tight">
-              My <span className="text-primary">Stack</span>
-            </h2>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
-              The tools and technologies I use daily to build enterprise-grade systems
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {stackCategories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <div
-                  key={index}
-                  className="glass-card p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] group"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-medium text-foreground">{category.title}</h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {category.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex flex-col">
-                        <span className="text-foreground font-medium text-sm">{item.name}</span>
-                        <span className="text-muted-foreground text-xs">{item.description}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+const TechStack = () => (
+  <section id="skills" className="scroll-mt-20 py-20 sm:py-28">
+    <span id="services" className="sr-only" aria-hidden="true" />
+    <div className="section-shell">
+      <div className="mb-10 max-w-3xl"><p className="eyebrow mb-3">Engineering stack</p><h2 className="font-display text-4xl font-medium sm:text-5xl">A focused toolkit for complete delivery.</h2><p className="mt-5 text-lg leading-relaxed text-muted-foreground">One practical stack, organised around how systems are actually designed, integrated, shipped and supported.</p></div>
+      <div className="grid border-l border-t border-border md:grid-cols-2">
+        {groups.map((group) => { const Icon = group.icon; return <article key={group.title} className="border-b border-r border-border p-6 sm:p-8">
+          <div className="flex items-center justify-between"><span className="font-display text-sm text-primary">{group.number}</span><Icon className="h-6 w-6 text-primary" /></div>
+          <h3 className="mt-10 font-display text-2xl font-semibold">{group.title}</h3><p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">{group.description}</p>
+          <div className="mt-6 flex flex-wrap gap-2">{group.items.map((item) => <span key={item} className="rounded-full bg-muted px-3 py-1.5 text-xs font-medium">{item}</span>)}</div>
+        </article>; })}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default TechStack;
