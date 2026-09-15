@@ -22,8 +22,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         coral: "hsl(var(--accent-coral))",
@@ -61,6 +61,10 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        feature: {
+          DEFAULT: "hsl(var(--feature))",
+          foreground: "hsl(var(--feature-foreground))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

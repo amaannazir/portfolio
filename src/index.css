@@ -1,499 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ========================================
-   FRESH EDITORIAL DESIGN SYSTEM
-   Bold. Geometric. Striking.
-   ======================================== */
-
 @layer base {
   :root {
-    /* Fresh Light Theme - Crisp & Modern */
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 210 25% 96%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 210 25% 97%;
-    --popover-foreground: 222 47% 11%;
-
-    /* Bold Electric Blue Primary */
-    --primary: 217 91% 60%;
-    --primary-rgb: 59 130 246;
-    --primary-foreground: 0 0% 100%;
-    
-    /* Accent - Vibrant Coral */
-    --accent-coral: 12 95% 65%;
-    --accent-mint: 162 72% 47%;
-    --accent-violet: 262 83% 58%;
-    
-    /* Gradient system */
-    --gradient-start: 217 91% 60%;
-    --gradient-mid: 262 83% 58%;
-    --gradient-end: 12 95% 65%;
-
-    --secondary: 210 20% 92%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 15% 88%;
-    --muted-foreground: 222 20% 45%;
-
-    --accent: 262 83% 58%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 210 20% 87%;
-    --input: 210 15% 90%;
-    --ring: 217 91% 60%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 210 25% 96%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 20% 92%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 210 20% 87%;
-    --sidebar-ring: 217 91% 60%;
+    --background: 48 24% 94%;
+    --foreground: 153 21% 12%;
+    --card: 48 30% 97%;
+    --card-foreground: 153 21% 12%;
+    --popover: 48 30% 97%;
+    --popover-foreground: 153 21% 12%;
+    --primary: 151 44% 26%;
+    --primary-foreground: 48 35% 96%;
+    --secondary: 79 58% 77%;
+    --secondary-foreground: 153 30% 14%;
+    --muted: 48 14% 89%;
+    --muted-foreground: 150 9% 37%;
+    --accent: 79 58% 77%;
+    --accent-foreground: 153 30% 14%;
+    --destructive: 0 66% 44%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 12% 77%;
+    --input: 150 12% 77%;
+    --ring: 151 44% 26%;
+    --feature: 153 28% 13%;
+    --feature-foreground: 48 35% 96%;
+    --radius: 0.5rem;
+    --sidebar-background: 48 30% 97%;
+    --sidebar-foreground: 153 21% 12%;
+    --sidebar-primary: 151 44% 26%;
+    --sidebar-primary-foreground: 48 35% 96%;
+    --sidebar-accent: 79 58% 77%;
+    --sidebar-accent-foreground: 153 30% 14%;
+    --sidebar-border: 150 12% 77%;
+    --sidebar-ring: 151 44% 26%;
   }
 
   .dark {
-    /* Deep Slate Dark Theme */
-    --background: 222 47% 6%;
-    --foreground: 210 20% 98%;
-
-    --card: 222 40% 9%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 222 40% 9%;
-    --popover-foreground: 210 20% 98%;
-
-    /* Electric Blue - brighter in dark mode */
-    --primary: 217 91% 65%;
-    --primary-rgb: 96 165 250;
-    --primary-foreground: 222 47% 6%;
-    
-    /* Accent colors - dark mode */
-    --accent-coral: 12 95% 68%;
-    --accent-mint: 162 72% 52%;
-    --accent-violet: 262 83% 65%;
-    
-    /* Gradient system - dark mode */
-    --gradient-start: 217 91% 65%;
-    --gradient-mid: 262 83% 65%;
-    --gradient-end: 12 95% 68%;
-
-    --secondary: 222 35% 14%;
-    --secondary-foreground: 210 20% 98%;
-
-    --muted: 222 30% 18%;
-    --muted-foreground: 210 15% 60%;
-
-    --accent: 262 83% 65%;
-    --accent-foreground: 222 47% 6%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 222 25% 18%;
-    --input: 222 30% 15%;
-    --ring: 217 91% 65%;
-    
-    --sidebar-background: 222 40% 9%;
-    --sidebar-foreground: 210 20% 98%;
-    --sidebar-primary: 217 91% 65%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 35% 14%;
-    --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 222 25% 18%;
-    --sidebar-ring: 217 91% 65%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
+    --background: 156 22% 7%;
+    --foreground: 48 22% 91%;
+    --card: 153 20% 10%;
+    --card-foreground: 48 22% 91%;
+    --popover: 153 20% 10%;
+    --popover-foreground: 48 22% 91%;
+    --primary: 79 58% 70%;
+    --primary-foreground: 153 30% 10%;
+    --secondary: 151 35% 22%;
+    --secondary-foreground: 48 30% 94%;
+    --muted: 153 16% 15%;
+    --muted-foreground: 48 10% 66%;
+    --accent: 79 45% 28%;
+    --accent-foreground: 48 30% 94%;
+    --destructive: 0 54% 44%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 13% 24%;
+    --input: 150 13% 24%;
+    --ring: 79 58% 70%;
+    --feature: 151 28% 12%;
+    --feature-foreground: 48 30% 94%;
+    --sidebar-background: 153 20% 10%;
+    --sidebar-foreground: 48 22% 91%;
+    --sidebar-primary: 79 58% 70%;
+    --sidebar-primary-foreground: 153 30% 10%;
+    --sidebar-accent: 151 35% 22%;
+    --sidebar-accent-foreground: 48 30% 94%;
+    --sidebar-border: 150 13% 24%;
+    --sidebar-ring: 79 58% 70%;
   }
 
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    position: relative;
+    @apply bg-background text-foreground antialiased;
+    font-family: "DM Sans", system-ui, sans-serif;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Bold Display Typography */
-  h1, h2, h3 {
-    font-family: 'Syne', sans-serif;
-    letter-spacing: -0.03em;
-    font-weight: 600;
-  }
+  h1, h2, h3, h4 { font-family: "Space Grotesk", system-ui, sans-serif; letter-spacing: 0; }
+  ::selection { @apply bg-secondary text-secondary-foreground; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
 }
 
 @layer utilities {
-  .starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
+  .section-shell { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+  .eyebrow { @apply text-xs font-semibold uppercase text-primary; letter-spacing: .14em; }
+  .editorial-rule { @apply border-t border-border; }
+  .feature-surface { background: hsl(var(--feature)); color: hsl(var(--feature-foreground)); }
+  .subtle-grid {
+    background-image: linear-gradient(hsl(var(--feature-foreground) / .08) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--feature-foreground) / .08) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
+}
 
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.5;
-    animation: twinkle 4s infinite ease-in-out;
-  }
-
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.6; }
-  }
-
-  .abstract-shape {
-    position: absolute;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    opacity: 0.12;
-    filter: blur(60px);
-    transition: all 0.6s ease;
-  }
-
-  /* ========================================
-     GEOMETRIC CARD SYSTEM
-     Sharp, Bold, Modern
-     ======================================== */
-  .glass-card {
-    background: hsl(var(--card) / 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border) / 0.5);
-    border-radius: var(--radius);
-    box-shadow: 
-      0 4px 24px hsl(var(--foreground) / 0.04),
-      0 1px 2px hsl(var(--foreground) / 0.02);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .dark .glass-card {
-    background: hsl(var(--card) / 0.6);
-    border: 1px solid hsl(var(--border) / 0.6);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .glass-card:hover {
-    border-color: hsl(var(--primary) / 0.4);
-    box-shadow: 
-      0 16px 48px hsl(var(--primary) / 0.12),
-      0 4px 16px hsl(var(--foreground) / 0.04);
-    transform: translateY(-4px);
-  }
-
-  .dark .glass-card:hover {
-    box-shadow: 
-      0 20px 60px hsl(var(--primary) / 0.15),
-      0 8px 24px rgba(0, 0, 0, 0.3);
-  }
-
-  /* ========================================
-     STRIKING GRADIENT TEXT
-     Multi-color, Bold, Eye-catching
-     ======================================== */
-  .gradient-text {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--gradient-start)) 0%,
-      hsl(var(--gradient-mid)) 50%,
-      hsl(var(--gradient-end)) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Animated gradient text */
-  .gradient-text-animated {
-    background: linear-gradient(
-      90deg,
-      hsl(var(--gradient-start)),
-      hsl(var(--gradient-mid)),
-      hsl(var(--gradient-end)),
-      hsl(var(--gradient-start))
-    );
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 6s ease infinite;
-  }
-
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  /* ========================================
-     BOLD BUTTON SYSTEM
-     Sharp edges, Strong presence
-     ======================================== */
-  .btn-luxury {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--gradient-start)) 0%,
-      hsl(var(--gradient-mid)) 100%
-    );
-    border-radius: calc(var(--radius) - 2px);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    box-shadow: 
-      0 4px 16px hsl(var(--primary) / 0.35),
-      0 2px 4px hsl(var(--primary) / 0.2);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .btn-luxury:hover {
-    box-shadow: 
-      0 8px 32px hsl(var(--primary) / 0.45),
-      0 4px 12px hsl(var(--primary) / 0.3);
-    transform: translateY(-3px);
-  }
-  
-  .btn-luxury:active {
-    transform: translateY(0);
-    box-shadow: 
-      0 2px 8px hsl(var(--primary) / 0.3);
-  }
-  
-  .btn-luxury::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.6s ease;
-  }
-  
-  .btn-luxury:hover::before {
-    left: 100%;
-  }
-
-  /* ========================================
-     GEOMETRIC DIVIDERS & ACCENTS
-     ======================================== */
-  .section-divider {
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--gradient-start)) 20%,
-      hsl(var(--gradient-mid)) 50%,
-      hsl(var(--gradient-end)) 80%,
-      transparent 100%
-    );
-    opacity: 0.4;
-  }
-
-  /* Geometric accent line */
-  .accent-line {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--gradient-start)),
-      hsl(var(--gradient-mid))
-    );
-    border-radius: 2px;
-  }
-
-  /* ========================================
-     MODERN BADGE SYSTEM
-     ======================================== */
-  .luxury-badge {
-    background: hsl(var(--primary) / 0.1);
-    border: 1px solid hsl(var(--primary) / 0.2);
-    backdrop-filter: blur(8px);
-    border-radius: 9999px;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .luxury-badge:hover {
-    background: hsl(var(--primary) / 0.15);
-    border-color: hsl(var(--primary) / 0.4);
-    transform: scale(1.05);
-  }
-
-  /* ========================================
-     LINK ANIMATIONS
-     ======================================== */
-  .link-elegant {
-    position: relative;
-  }
-  
-  .link-elegant::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--gradient-start)),
-      hsl(var(--gradient-mid))
-    );
-    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    border-radius: 1px;
-  }
-  
-  .link-elegant:hover::after {
-    width: 100%;
-  }
-
-  /* ========================================
-     ANIMATIONS
-     Smooth, Snappy, Modern
-     ======================================== */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes glow-pulse {
-    0%, 100% {
-      box-shadow: 
-        0 0 4px hsl(142 76% 40% / 0.4),
-        0 0 12px hsl(142 76% 40% / 0.2);
-    }
-    50% {
-      box-shadow: 
-        0 0 8px hsl(142 76% 40% / 0.6),
-        0 0 20px hsl(142 76% 40% / 0.3);
-    }
-  }
-  
-  .glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  /* Tactile hover */
-  .tactile-hover {
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .tactile-hover:hover {
-    transform: translateY(-4px);
-  }
-  
-  .tactile-hover:active {
-    transform: translateY(0);
-  }
-
-  /* Scale animations */
-  @keyframes scale-in {
-    0% { 
-      opacity: 0; 
-      transform: scale(0.9); 
-    }
-    100% { 
-      opacity: 1; 
-      transform: scale(1); 
-    }
-  }
-  
-  .animate-scale-in {
-    animation: scale-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  /* Shimmer effect */
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-  
-  .shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--primary) / 0.08) 50%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  /* Modern input focus */
-  .input-modern {
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .input-modern:focus {
-    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
-    border-color: hsl(var(--primary) / 0.6);
-  }
-
-  /* ========================================
-     GEOMETRIC BACKGROUND PATTERNS
-     ======================================== */
-  .geo-pattern {
-    position: absolute;
-    opacity: 0.03;
-    background-image: 
-      linear-gradient(30deg, hsl(var(--foreground)) 12%, transparent 12.5%, transparent 87%, hsl(var(--foreground)) 87.5%, hsl(var(--foreground))),
-      linear-gradient(150deg, hsl(var(--foreground)) 12%, transparent 12.5%, transparent 87%, hsl(var(--foreground)) 87.5%, hsl(var(--foreground))),
-      linear-gradient(30deg, hsl(var(--foreground)) 12%, transparent 12.5%, transparent 87%, hsl(var(--foreground)) 87.5%, hsl(var(--foreground))),
-      linear-gradient(150deg, hsl(var(--foreground)) 12%, transparent 12.5%, transparent 87%, hsl(var(--foreground)) 87.5%, hsl(var(--foreground)));
-    background-size: 80px 140px;
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px;
-  }
-
-  /* Noise texture overlay */
-  .noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.015;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-
-  .dark .noise-overlay {
-    opacity: 0.02;
-  }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
