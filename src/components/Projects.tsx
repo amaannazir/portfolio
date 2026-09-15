@@ -88,9 +88,9 @@ const projects: Project[] = [
   },
 ];
 
-const DetailDialog = ({ project }: { project: Project }) => (
+const DetailDialog = ({ project, inverse = false }: { project: Project; inverse?: boolean }) => (
   <Dialog>
-    <DialogTrigger asChild><Button variant="outline">View details <ArrowUpRight /></Button></DialogTrigger>
+    <DialogTrigger asChild><Button variant="outline" className={inverse ? "border-feature-foreground/30 text-feature-foreground hover:bg-feature-foreground/10 hover:text-feature-foreground" : undefined}>View details <ArrowUpRight /></Button></DialogTrigger>
     <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto rounded-lg bg-card p-6 sm:p-8">
       <DialogHeader className="pr-8 text-left">
         <p className="eyebrow">{project.label}</p>
@@ -126,7 +126,7 @@ const Projects = () => {
                 <p className="mb-3 font-display text-sm text-secondary">0{index + 1}</p>
                 <h3 className="max-w-lg font-display text-3xl font-medium leading-tight sm:text-4xl">{project.title}</h3>
                 <p className="mt-5 max-w-xl leading-relaxed text-feature-foreground/75">{project.summary}</p>
-                <div className="mt-auto pt-8"><DetailDialog project={project} /></div>
+                <div className="mt-auto pt-8"><DetailDialog project={project} inverse /></div>
               </div>
             </article>;
           })}
