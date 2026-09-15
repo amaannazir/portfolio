@@ -1,8 +1,8 @@
 # Redesign roadmap
 
-- [ ] Audit existing content, links, and design system
-- [ ] Build editorial page structure and visual system
-- [ ] Preserve and restyle working contact form
-- [ ] Consolidate work, stack, about, and career content
-- [ ] Fix metadata and remove obsolete visual effects
+- [x] Audit existing content, links, and design system
+- [x] Build editorial page structure and visual system
+- [x] Preserve and restyle working contact form
+- [x] Consolidate work, stack, about, and career content
+- [x] Fix metadata and remove obsolete visual effects
 - [ ] Validate interactions, themes, and responsive layouts

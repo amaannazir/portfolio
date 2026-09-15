@@ -75,6 +75,7 @@
     font-family: "DM Sans", system-ui, sans-serif;
     overflow-x: hidden;
   }
+  #root { overflow-x: clip; }
   h1, h2, h3, h4 { font-family: "Space Grotesk", system-ui, sans-serif; letter-spacing: 0; }
   ::selection { @apply bg-secondary text-secondary-foreground; }
   :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }

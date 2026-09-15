@@ -27,7 +27,7 @@ const Hero = () => (
       <div className="relative mx-auto w-full max-w-xl lg:mx-0">
         <div className="absolute -left-4 top-8 h-[calc(100%-2rem)] w-full rounded-lg border border-primary/40 sm:-left-7" aria-hidden="true" />
         <div className="relative overflow-hidden rounded-t-lg bg-feature">
-          <img src={profileImage} alt="Portrait of Amaan Nazir, Full-Stack Systems Software Engineer" width="1824" height="1216" loading="eager" decoding="async" fetchPriority="high" className="aspect-[4/4.3] w-full object-cover object-center grayscale-[15%]" />
+          <img src={profileImage} alt="Portrait of Amaan Nazir, Full-Stack Systems Software Engineer" width="1824" height="1216" loading="eager" decoding="async" className="aspect-[4/4.3] w-full object-cover object-center grayscale-[15%]" />
           <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-feature/95 px-5 py-4 text-feature-foreground">
             <span className="font-display font-medium">Engineering at NEXT</span>
             <span className="text-xs uppercase opacity-70" style={{ letterSpacing: ".12em" }}>Sheffield, UK</span>
@@ -39,7 +39,7 @@ const Hero = () => (
     <div className="feature-surface">
       <div className="section-shell grid sm:grid-cols-3">
         {["GWOS & warehouse workflows", "Event-driven Azure systems", "Architecture through automated QA"].map((item, index) => (
-          <div key={item} className="flex min-h-20 items-center gap-4 border-feature-foreground/20 px-0 py-5 sm:border-r sm:px-6 first:pl-0 last:border-0">
+          <div key={item} className="flex min-h-20 min-w-0 items-center gap-4 border-feature-foreground/20 px-0 py-5 sm:border-r sm:px-6 first:pl-0 last:border-0">
             <span className="font-display text-sm text-secondary">0{index + 1}</span><span className="text-sm font-medium">{item}</span>
           </div>
         ))}
