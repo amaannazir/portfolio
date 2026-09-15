@@ -51,14 +51,14 @@ const containsSpamPatterns = (text: string): boolean => {
 
 // Input validation
 const validateInput = (name: string, email: string, message: string): string | null => {
-  if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 100) {
+  if (!name || typeof name !== 'string' || name.trim().length < 1 || name.length > 100) {
     return 'Invalid name provided';
   }
   if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
     return 'Invalid email address';
   }
-  if (!message || typeof message !== 'string' || message.trim().length < 10 || message.length > 5000) {
-    return 'Message must be between 10 and 5000 characters';
+  if (!message || typeof message !== 'string' || message.trim().length < 1 || message.length > 5000) {
+    return 'Message must be between 1 and 5000 characters';
   }
   return null;
 };
@@ -150,6 +150,14 @@ const handler = async (req: Request): Promise<Response> => {
         <p>${sanitizedMessage}</p>
       `,
     });
+
+    if ((emailResponse as any)?.error) {
+      console.error("Email provider rejected the message:", (emailResponse as any).error);
+      return new Response(
+        JSON.stringify({ error: 'Failed to send message. Please try again later.' }),
+        { status: 502, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
 
     console.log("Email sent successfully:", emailResponse);
 
