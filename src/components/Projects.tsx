@@ -3,6 +3,9 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import snakeImage from "@/assets/project-snake-spectrum.png";
 import halalImage from "@/assets/project-halal-delivery.jpg";
+import legacyReportingImage from "@/assets/project-legacy-reporting.png";
+import internationalIntakeImage from "@/assets/project-international-intake.png";
+import checkstationImage from "@/assets/project-checkstation.png";
 
 type Project = {
   title: string;
@@ -67,6 +70,7 @@ const projects: Project[] = [
     contribution: "Owned the project independently for six months, migrated merchandise intake reporting and rebuilt 93+ reports using C#, ASP.NET Core, MudBlazor and SQL.",
     technologies: ["C#", ".NET", "ASP.NET Core", "MudBlazor", "SQL"],
     icon: GitBranch,
+    image: legacyReportingImage,
   },
   {
     title: "International Intake Processing",
@@ -76,6 +80,7 @@ const projects: Project[] = [
     contribution: "Developed and integrated application functionality into the existing warehouse estate, supporting cross-border merchandise intake workflows.",
     technologies: ["C#", ".NET", "ASP.NET Core", "Entity Framework Core"],
     icon: Boxes,
+    image: internationalIntakeImage,
   },
   {
     title: "Checkstation",
@@ -85,6 +90,7 @@ const projects: Project[] = [
     contribution: "Contributed to the design and implementation of the Checkstation state-machine client and its role within the E3 quality workflow.",
     technologies: ["C#", ".NET", "Blazor", "State Machines"],
     icon: ScanLine,
+    image: checkstationImage,
   },
 ];
 
@@ -145,10 +151,27 @@ const Projects = () => {
           </article>)}
         </div>
 
-        <div className="mt-8 border-t border-border sm:mt-12">
-          {secondary.map((project) => <article key={project.title} className="grid gap-4 border-b border-border py-7 sm:grid-cols-[1fr_1.4fr_auto] sm:items-center">
-            <div><p className="mb-1 text-xs uppercase text-primary">{project.label}</p><h3 className="font-display text-xl font-semibold">{project.title}</h3></div>
-            <p className="text-sm leading-relaxed text-muted-foreground">{project.summary}</p><DetailDialog project={project} />
+        <div className="mt-8 grid gap-5 sm:mt-12 md:grid-cols-2 lg:grid-cols-3">
+          {secondary.map((project) => <article key={project.title} className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card">
+            <div className="relative overflow-hidden border-b border-border bg-muted">
+              <img
+                src={project.image}
+                alt={`Conceptual illustration of ${project.title} by Amaan Nazir`}
+                width="1536"
+                height="1024"
+                loading="lazy"
+                className="aspect-[3/2] w-full object-cover transition-transform duration-500 motion-safe:hover:scale-[1.02]"
+              />
+              <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-md border border-feature-foreground/20 bg-feature text-feature-foreground shadow-sm" aria-hidden="true">
+                {(() => { const Icon = project.icon; return <Icon className="h-5 w-5" />; })()}
+              </div>
+            </div>
+            <div className="flex flex-1 flex-col p-6">
+              <p className="eyebrow mb-3">{project.label}</p>
+              <h3 className="font-display text-xl font-semibold leading-tight sm:text-2xl">{project.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
+              <div className="mt-auto pt-6"><DetailDialog project={project} /></div>
+            </div>
           </article>)}
         </div>
       </div>
